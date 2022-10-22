@@ -157,7 +157,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
         if (! class_exists($modelClass)) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('make:model', [
-                    'name'      => $modelClass,
+                    'name' => $modelClass,
                     '--section' => $this->option('module'),
                 ]);
             }
@@ -182,7 +182,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
 
         return array_merge($replace, [
             'DummySectionNormal' => $section,
-            'DummySectionLower'  => strtolower($section),
+            'DummySectionLower' => strtolower($section),
         ]);
     }
 
@@ -222,12 +222,12 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
             if (! class_exists($requestClass)) {
                 if ($this->confirm("A {$requestClass} Request does not exist. Do you want to generate it?", true)) {
                     $this->call('make:request', [
-                        'name'              => Str::studly($this->nameWithoutController()).'Request',
-                        '--section'         => $this->option('module'),
-                        '--admin'           => $this->option('admin'),
-                        '--site'            => $this->option('site'),
-                        '--api'             => $this->option('api'),
-                        '--api-version'     => $this->option('api-version') ? $this->option('api-version') : 'V1',
+                        'name' => Str::studly($this->nameWithoutController()).'Request',
+                        '--section' => $this->option('module'),
+                        '--admin' => $this->option('admin'),
+                        '--site' => $this->option('site'),
+                        '--api' => $this->option('api'),
+                        '--api-version' => $this->option('api-version') ? $this->option('api-version') : 'V1',
                     ]);
                 }
             }
@@ -235,7 +235,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
 
         return array_merge($replace, [
             'DummyFullRequestClass' => ($this->option('module')) ? $requestClass : 'Illuminate\Http\Request',
-            'DummyRequestClass'     => ($this->option('module')) ? Str::studly($this->nameWithoutController()).'Request' : 'Request',
+            'DummyRequestClass' => ($this->option('module')) ? Str::studly($this->nameWithoutController()).'Request' : 'Request',
         ]);
     }
 

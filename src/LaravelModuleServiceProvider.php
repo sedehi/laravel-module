@@ -3,11 +3,11 @@
 namespace Sedehi\LaravelModule;
 
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
-use Sedehi\LaravelModule\MigrationServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
 use Sedehi\LaravelModule\Commands\MakeCommand;
 use Sedehi\LaravelModule\Commands\MakeController;
+use Sedehi\LaravelModule\Commands\MakeCrud;
 use Sedehi\LaravelModule\Commands\MakeEvent;
 use Sedehi\LaravelModule\Commands\MakeException;
 use Sedehi\LaravelModule\Commands\MakeFactory;
@@ -16,29 +16,27 @@ use Sedehi\LaravelModule\Commands\MakeListener;
 use Sedehi\LaravelModule\Commands\MakeMail;
 use Sedehi\LaravelModule\Commands\MakeMigration;
 use Sedehi\LaravelModule\Commands\MakeModel;
+use Sedehi\LaravelModule\Commands\MakeModule;
 use Sedehi\LaravelModule\Commands\MakeNotification;
 use Sedehi\LaravelModule\Commands\MakeObserver;
 use Sedehi\LaravelModule\Commands\MakePolicy;
 use Sedehi\LaravelModule\Commands\MakeRequest;
 use Sedehi\LaravelModule\Commands\MakeResource;
 use Sedehi\LaravelModule\Commands\MakeRule;
-use Sedehi\LaravelModule\Commands\MakeModule;
 use Sedehi\LaravelModule\Commands\MakeSeeder;
-use Sedehi\LaravelModule\Commands\MakeCrud;
 use Sedehi\LaravelModule\Commands\MakeTest;
 use Sedehi\LaravelModule\Commands\MakeView;
 
 class LaravelModuleServiceProvider extends ArtisanServiceProvider
 {
-
     public function register()
     {
         $this->devCommands = array_merge(
             $this->devCommands,
             [
-                'SectionMake'        =>  MakeModule::class,
-                'SubsectionMake'     =>  MakeCrud::class,
-                'ViewMake'           =>  MakeView::class,
+                'SectionMake' => MakeModule::class,
+                'SubsectionMake' => MakeCrud::class,
+                'ViewMake' => MakeView::class,
             ]
         );
 
@@ -225,5 +223,4 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             return new MakeModule();
         });
     }
-
 }

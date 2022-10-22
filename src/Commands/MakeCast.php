@@ -14,7 +14,6 @@ class MakeCast extends CastMakeCommand implements ModuleName
 
     protected function getDefaultNamespace($rootNamespace)
     {
-
         return $rootNamespace.$this->getModuleName().'\Casts';
     }
 }

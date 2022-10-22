@@ -12,16 +12,20 @@ use Sedehi\LaravelModule\Commands\Questions\ControllerName;
 use Sedehi\LaravelModule\Commands\Questions\ControllerType;
 use Sedehi\LaravelModule\Commands\Questions\EventName;
 use Sedehi\LaravelModule\Commands\Questions\ModelName;
+use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 use Sedehi\LaravelModule\Commands\Questions\ParentModelName;
 use Sedehi\LaravelModule\Commands\Questions\ResourceCollection;
-use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 
 trait Interactive
 {
     private $needApiVersion = false;
+
     private $needModel = false;
+
     private $needParentModel = false;
+
     private $needController = false;
+
     private $needClassType = false;
 
     public function handle()
