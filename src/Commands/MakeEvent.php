@@ -3,7 +3,6 @@
 namespace Sedehi\LaravelModule\Commands;
 
 use Illuminate\Foundation\Console\EventMakeCommand;
-use Illuminate\Support\Str;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 use Sedehi\LaravelModule\Traits\CommandOptions;
 use Sedehi\LaravelModule\Traits\Interactive;
@@ -15,7 +14,6 @@ class MakeEvent extends EventMakeCommand implements ModuleName
 
     protected function getDefaultNamespace($rootNamespace)
     {
-
         return $rootNamespace.$this->getModuleName().'\Events';
     }
 }

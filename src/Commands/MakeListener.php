@@ -3,7 +3,6 @@
 namespace Sedehi\LaravelModule\Commands;
 
 use Illuminate\Foundation\Console\ListenerMakeCommand;
-use Illuminate\Support\Str;
 use Sedehi\LaravelModule\Commands\Questions\EventName;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 use Sedehi\LaravelModule\Traits\CommandOptions;

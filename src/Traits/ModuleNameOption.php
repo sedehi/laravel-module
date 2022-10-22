@@ -8,7 +8,7 @@ trait ModuleNameOption
 {
     protected function getModuleName()
     {
-        return Str::of($this->option('module'))->whenNotEmpty(function ($string){
+        return Str::of($this->option('module'))->whenNotEmpty(function ($string) {
             return $string->studly()->trim()->start('\\Modules\\');
         });
     }

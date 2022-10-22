@@ -3,7 +3,6 @@
 namespace Sedehi\LaravelModule\Commands;
 
 use Illuminate\Foundation\Console\ObserverMakeCommand;
-use Illuminate\Support\Str;
 use Sedehi\LaravelModule\Commands\Questions\ModelName;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 use Sedehi\LaravelModule\Traits\CommandOptions;
