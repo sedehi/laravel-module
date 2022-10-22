@@ -195,32 +195,4 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             return new MakeTest($app['files']);
         });
     }
-
-    protected function registerSubsectionMakeCommand()
-    {
-        $this->app->singleton('command.subsection.make', function ($app) {
-            return new MakeCrud();
-        });
-    }
-
-    protected function registerViewMakeCommand()
-    {
-        $this->app->singleton('command.view.make', function ($app) {
-            return new MakeView();
-        });
-    }
-
-    protected function registerArtistInstallCommand()
-    {
-        $this->app->singleton('command.install.artist', function ($app) {
-            return new InstallCommand();
-        });
-    }
-
-    protected function registerSectionMakeCommand()
-    {
-        $this->app->singleton('command.section.make', function ($app) {
-            return new MakeModule();
-        });
-    }
 }

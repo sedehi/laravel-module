@@ -49,13 +49,6 @@ Optionally, you can publish the views using
 php artisan vendor:publish --tag="laravel-module-views"
 ```
 
-## Usage
-
-```php
-$laravelModule = new Sedehi\LaravelModule();
-echo $laravelModule->echoPhrase('Hello, Sedehi!');
-```
-
 ## Testing
 
 ```bash
