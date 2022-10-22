@@ -5,8 +5,8 @@ namespace Sedehi\LaravelModule\Commands;
 use Illuminate\Foundation\Console\ResourceMakeCommand;
 use Illuminate\Support\Str;
 use Sedehi\LaravelModule\Commands\Questions\ApiVersion;
-use Sedehi\LaravelModule\Commands\Questions\ResourceCollection;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
+use Sedehi\LaravelModule\Commands\Questions\ResourceCollection;
 use Sedehi\LaravelModule\Traits\Interactive;
 use Symfony\Component\Console\Input\InputOption;
 

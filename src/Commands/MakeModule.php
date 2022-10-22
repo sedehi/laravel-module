@@ -34,8 +34,8 @@ class MakeModule extends Command
         }
 
         $this->call('make:crud', [
-            'parent'    => strtolower($this->argument('name')),
-            'name'      => strtolower($this->argument('name')),
+            'parent' => strtolower($this->argument('name')),
+            'name' => strtolower($this->argument('name')),
         ]);
     }
 }
