@@ -7,18 +7,15 @@ use Illuminate\Support\Str;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 use Sedehi\LaravelModule\Traits\CommandOptions;
 use Sedehi\LaravelModule\Traits\Interactive;
+use Sedehi\LaravelModule\Traits\ModuleNameOption;
 
 class MakeEvent extends EventMakeCommand implements ModuleName
 {
-    use CommandOptions,Interactive;
+    use CommandOptions,Interactive,ModuleNameOption;
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        $namespace = $rootNamespace.'\Http';
-        if ($this->option('module') !== null) {
-            $namespace .= '\Controllers\\'.Str::studly($this->option('module'));
-        }
 
-        return $namespace.'\Events';
+        return $rootNamespace.$this->getModuleName().'\Events';
     }
 }

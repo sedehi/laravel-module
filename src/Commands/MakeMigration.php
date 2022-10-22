@@ -13,16 +13,16 @@ class MakeMigration extends MigrateMakeCommand implements ModuleName
 
     public function __construct($creator, $composer)
     {
-        $this->signature .= '{--section= : The name of the section}';
+        $this->signature .= '{--module= : The name of the section}';
         $this->signature .= '{--in=false : Interactive mode}';
         parent::__construct($creator, $composer);
     }
 
     protected function getMigrationPath()
     {
-        $section = (Str::studly($this->input->getOption('section')));
-        if ($section !== '') {
-            $path = $this->laravel->basePath().'/app/Http/Controllers/'.$section.'/database/migrations';
+        $module = (Str::studly($this->input->getOption('module')));
+        if ($module !== '') {
+            $path = $this->laravel->basePath().'/app/'.$module.'/database/migrations';
             $this->makeDirectory($path);
 
             return $path;

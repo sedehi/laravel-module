@@ -8,18 +8,14 @@ use Sedehi\LaravelModule\Commands\Questions\ModelName;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 use Sedehi\LaravelModule\Traits\CommandOptions;
 use Sedehi\LaravelModule\Traits\Interactive;
+use Sedehi\LaravelModule\Traits\ModuleNameOption;
 
 class MakePolicy extends PolicyMakeCommand implements ModuleName, ModelName
 {
-    use CommandOptions,Interactive;
+    use CommandOptions,Interactive,ModuleNameOption;
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        $namespace = $rootNamespace.'\Http';
-        if ($this->option('module') !== null) {
-            $namespace .= '\Controllers\\'.Str::studly($this->option('module'));
-        }
-
-        return $namespace.'\Policies';
+        return $rootNamespace.$this->getModuleName().'\Policies';
     }
 }
