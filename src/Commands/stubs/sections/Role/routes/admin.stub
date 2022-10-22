@@ -1,0 +1,5 @@
+<?php
+
+use App\Http\Controllers\Role\Controllers\Admin\RoleController;
+
+Route::resource('roles', RoleController::class)->except('show');

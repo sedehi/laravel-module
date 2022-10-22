@@ -13,7 +13,7 @@ class MakeMigration extends MigrateMakeCommand implements ModuleName
 
     public function __construct($creator, $composer)
     {
-        $this->signature .= '{--module= : The name of the section}';
+        $this->signature .= '{--module= : The name of the modules}';
         $this->signature .= '{--in=false : Interactive mode}';
         parent::__construct($creator, $composer);
     }

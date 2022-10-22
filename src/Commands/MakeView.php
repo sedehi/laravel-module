@@ -12,7 +12,7 @@ class MakeView extends Command
      *
      * @var string
      */
-    protected $signature = 'make:view {module : The name of the section} {name : The name of the folder} {controller : The name of controller} {--upload}';
+    protected $signature = 'make:view {module : The name of the module} {name : The name of the folder} {controller : The name of controller} {--upload}';
 
     /**
      * The console command description.

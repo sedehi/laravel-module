@@ -1,0 +1,22 @@
+<div class="row">
+    <x-artist::inputs.text :model="$item ?? null" name="first_name" />
+    <x-artist::inputs.text :model="$item ?? null" name="last_name" />
+    <x-artist::inputs.text :model="$item ?? null" name="password" type="password" />
+    <x-artist::inputs.text :model="$item ?? null" name="email" />
+    <div class="col-md-12 row">
+        <h6 class="mb-3">@lang('artist::artist.management_group')</h6>
+        <div class="col-md-12 row mb-5">
+            @foreach($roles as $role)
+                <div class="form-check col-md-3 mb-2 mt-2">
+                    <input type="checkbox" name="role[{{ $role->id }}]" value="{{ $role->id }}" id="{{ 'role_'.$role->id }}" class="form-check-input" @if (old('role.'.$role->id,isset($relatedRoles) ? in_array($role->id,$relatedRoles) : false)) checked @endif>
+                    <label class="form-check-label" for="role_{{$role->id}}">
+                        {{$role->title}}
+                    </label>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    <br>
+    <div class="clearfix"></div>
+    <br>
+</div>

@@ -17,7 +17,7 @@ class MakeRequest extends RequestMakeCommand implements ModuleName, ClassTypeMul
     {
         $options = parent::getOptions();
         $options = array_merge($options, [
-            ['section', null, InputOption::VALUE_OPTIONAL, 'The name of the section'],
+            ['module', null, InputOption::VALUE_OPTIONAL, 'The name of the module'],
             ['in', false, InputOption::VALUE_NONE, 'Interactive mode'],
             ['api-version', 'av', InputOption::VALUE_OPTIONAL, 'Set request version'],
             ['admin', null, InputOption::VALUE_NONE, 'Generate request for admin'],
@@ -39,9 +39,9 @@ class MakeRequest extends RequestMakeCommand implements ModuleName, ClassTypeMul
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        $namespace = $rootNamespace.'\Http';
+        $namespace = $rootNamespace;
         if ($this->option('module') !== null) {
-            $namespace .= '\Controllers\\'.Str::studly($this->option('module'));
+            $namespace .= '\Modules\\'.Str::studly($this->option('module'));
         }
         $namespace .= '\Requests';
         if ($this->option('admin')) {

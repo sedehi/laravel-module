@@ -13,7 +13,7 @@ class MakeCrud extends Command
      *
      * @var string
      */
-    protected $signature = 'make:crud {parent : The name of the parent section} {name : The name of the subsection}';
+    protected $signature = 'make:crud {module : The name of the module} {name : The name of the crud}';
 
     /**
      * The console command description.
@@ -63,13 +63,13 @@ class MakeCrud extends Command
 
     private function makeModel()
     {
-        $this->call('make:model', ['--section' => $this->argument('parent'), 'name' => Str::studly($this->argument('name'))]);
+        $this->call('make:model', ['--module' => $this->argument('module'), 'name' => Str::studly($this->argument('name'))]);
     }
 
     private function makeAdminController()
     {
         $this->call('make:controller', [
-            '--section' => $this->argument('parent'),
+            '--module' => $this->argument('module'),
             'name' => ucfirst($this->argument('name')).'Controller',
             '--admin' => true,
             '--crud' => true,
@@ -83,7 +83,7 @@ class MakeCrud extends Command
     private function makeAdminControllerWithUpload()
     {
         $this->call('make:controller', [
-            '--section' => $this->argument('parent'),
+            '--module' => $this->argument('module'),
             'name' => ucfirst($this->argument('name')).'Controller',
             '--upload' => true,
             '--model' => $this->argument('name'),
@@ -98,19 +98,19 @@ class MakeCrud extends Command
     private function makeSiteController()
     {
         $this->call('make:controller', [
-            '--section' => ucfirst($this->argument('parent')),
+            '--module' => ucfirst($this->argument('module')),
             'name' => ucfirst($this->argument('name')).'Controller',
             '--site' => true,
         ]);
-        if (! File::isDirectory(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/views/site/'))) {
-            File::makeDirectory(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/views/site/'), 0775, true);
+        if (! File::isDirectory(app_path('Modules/'.ucfirst($this->argument('module')).'/views/site/'))) {
+            File::makeDirectory(app_path('Modules/'.ucfirst($this->argument('module')).'/views/site/'), 0775, true);
         }
     }
 
     private function makeMigration($name)
     {
         $this->call('make:migration', [
-            '--section' => ucfirst($this->argument('parent')),
+            '--module' => ucfirst($this->argument('module')),
             'name' => 'create_'.$name.'_table',
         ]);
     }
@@ -118,7 +118,7 @@ class MakeCrud extends Command
     private function makeApiController()
     {
         $this->call('make:controller', [
-            '--section' => ucfirst($this->argument('parent')),
+            '--module' => ucfirst($this->argument('module')),
             'name' => ucfirst($this->argument('name')).'Controller',
             '--api' => true,
             '--api-version' => 'v1',
@@ -127,35 +127,35 @@ class MakeCrud extends Command
 
     private function makeRoute($adminController, $siteController, $apiController)
     {
-        if (! File::isDirectory(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/'.'routes'))) {
-            File::makeDirectory(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/'.'routes'), 0775, true);
+        if (! File::isDirectory(app_path('Modules/'.ucfirst($this->argument('module')).'/'.'routes'))) {
+            File::makeDirectory(app_path('Modules/'.ucfirst($this->argument('module')).'/'.'routes'), 0775, true);
         }
         if ($siteController) {
-            if (File::exists(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/routes/'.'web.php'))) {
+            if (File::exists(app_path('Modules/'.ucfirst($this->argument('module')).'/routes/'.'web.php'))) {
                 $this->error('web route already exists.');
             } else {
-                File::put(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/routes/'.'web.php'), '<?php ');
+                File::put(app_path('Modules/'.ucfirst($this->argument('module')).'/routes/'.'web.php'), '<?php ');
                 $this->info('web route created successfully.');
             }
         }
         if ($adminController) {
-            if (File::exists(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/routes/'.'admin.php'))) {
+            if (File::exists(app_path('Modules/'.ucfirst($this->argument('module')).'/routes/'.'admin.php'))) {
                 $this->error('admin route already exists.');
             } else {
-                File::put(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/routes/'.'admin.php'), '<?php ');
+                File::put(app_path('Modules/'.ucfirst($this->argument('module')).'/routes/'.'admin.php'), '<?php ');
                 $data = File::get(__DIR__.'/stubs/route-admin.stub');
-                $data = str_replace('{{{name}}}', ucfirst($this->argument('parent')), $data);
+                $data = str_replace('{{{name}}}', ucfirst($this->argument('module')), $data);
                 $data = str_replace('{{{controller}}}', ucfirst($this->argument('name')).'Controller', $data);
                 $data = str_replace('{{{url}}}', strtolower($this->argument('name')), $data);
-                File::append(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/routes/'.'admin.php'), $data);
+                File::append(app_path('Http/Controllers/'.ucfirst($this->argument('module')).'/routes/'.'admin.php'), $data);
                 $this->info('admin route created successfully.');
             }
         }
         if ($apiController) {
-            if (File::exists(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/routes/'.'api.php'))) {
+            if (File::exists(app_path('Modules/'.ucfirst($this->argument('module')).'/routes/'.'api.php'))) {
                 $this->error('api route already exists.');
             } else {
-                File::put(app_path('Http/Controllers/'.ucfirst($this->argument('parent')).'/routes/'.'api.php'), '<?php ');
+                File::put(app_path('Modules/'.ucfirst($this->argument('module')).'/routes/'.'api.php'), '<?php ');
                 $this->info('api route created successfully.');
             }
         }
@@ -165,8 +165,8 @@ class MakeCrud extends Command
     {
         $this->call('make:factory', [
             'name' => ucfirst($this->argument('name')).'Factory',
-            '--section' => ucfirst($this->argument('parent')),
-            '--model' => $this->laravel->getNamespace().'Http\Controllers\\'.Str::studly($this->argument('parent')).
+            '--module' => ucfirst($this->argument('module')),
+            '--model' => $this->laravel->getNamespace().'Modules\\'.Str::studly($this->argument('module')).
                 '\\Models\\'.Str::studly($this->argument('name')),
         ]);
     }

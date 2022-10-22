@@ -9,17 +9,18 @@ use Sedehi\LaravelModule\Commands\Questions\ClassType;
 use Sedehi\LaravelModule\Commands\Questions\ControllerType;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 use Sedehi\LaravelModule\Traits\Interactive;
+use Sedehi\LaravelModule\Traits\ModuleNameOption;
 use Symfony\Component\Console\Input\InputOption;
 
 class MakeController extends ControllerMakeCommand implements ModuleName, ControllerType, ClassType
 {
-    use Interactive;
+    use Interactive,ModuleNameOption;
 
     protected function getOptions()
     {
         $options = parent::getOptions();
         $options = array_merge($options, [
-            ['section', null, InputOption::VALUE_OPTIONAL, 'The name of the section'],
+            ['module', null, InputOption::VALUE_OPTIONAL, 'The name of the module'],
             ['in', false, InputOption::VALUE_NONE, 'Interactive mode'],
             ['crud', null, InputOption::VALUE_NONE, 'Generate a crud controller class'],
             ['upload', null, InputOption::VALUE_NONE, 'Generate an upload controller class'],
@@ -34,7 +35,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        $namespace = $rootNamespace.'\Http\Controllers';
+        $namespace = $rootNamespace;
         if ($this->option('module')) {
             $namespace .= '\\'.Str::studly($this->option('module')).'\\Controllers';
         }
@@ -104,7 +105,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
         }
 
         if ($this->option('module')) {
-            $replace = $this->buildSectionReplacements($replace);
+            $replace = $this->buildModuleReplacements($replace);
             $replace = $this->buildViewsReplacements($replace);
             $replace = $this->buildRequestReplacements($replace);
             $replace = $this->buildActionReplacements($replace);
@@ -122,7 +123,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
         $parentModelClass = $this->parseModel($this->option('parent'));
 
         if ($this->option('module')) {
-            $parentModelClass = $this->laravel->getNamespace().'Http\\Controllers\\'.Str::studly($this->option('module')).'\\Models\\'.Str::studly($this->option('parent'));
+            $parentModelClass = $this->laravel->getNamespace().'Modules\\'.Str::studly($this->option('module')).'\\Models\\'.Str::studly($this->option('parent'));
         }
 
         if (! class_exists($parentModelClass)) {
@@ -152,13 +153,13 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
         $modelClass = $this->parseModel($this->option('model'));
 
         if ($this->option('module')) {
-            $modelClass = $this->laravel->getNamespace().'Http\\Controllers\\'.Str::studly($this->option('module')).'\\Models\\'.Str::studly($this->option('model'));
+            $modelClass = $this->laravel->getNamespace().'Modules\\'.Str::studly($this->option('module')).'\\Models\\'.Str::studly($this->option('model'));
         }
         if (! class_exists($modelClass)) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('make:model', [
                     'name' => $modelClass,
-                    '--section' => $this->option('module'),
+                    '--module' => $this->option('module'),
                 ]);
             }
         }
@@ -176,13 +177,13 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
         ]);
     }
 
-    protected function buildSectionReplacements($replace)
+    protected function buildModuleReplacements($replace)
     {
-        $section = Str::studly($this->option('module'));
+        $module = Str::studly($this->option('module'));
 
         return array_merge($replace, [
-            'DummySectionNormal' => $section,
-            'DummySectionLower' => strtolower($section),
+            'DummySectionNormal' => $module,
+            'DummySectionLower' => strtolower($module),
         ]);
     }
 
@@ -223,7 +224,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
                 if ($this->confirm("A {$requestClass} Request does not exist. Do you want to generate it?", true)) {
                     $this->call('make:request', [
                         'name' => Str::studly($this->nameWithoutController()).'Request',
-                        '--section' => $this->option('module'),
+                        '--module' => $this->option('module'),
                         '--admin' => $this->option('admin'),
                         '--site' => $this->option('site'),
                         '--api' => $this->option('api'),
@@ -257,7 +258,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
 
     protected function getRequestClass()
     {
-        $class = $this->laravel->getNamespace().'Http\\Controllers\\'.Str::studly($this->option('module')).'\\Requests\\';
+        $class = $this->laravel->getNamespace().'Modules\\'.Str::studly($this->option('module')).'\\Requests\\';
 
         if ($this->option('api')) {
             if ($this->option('api-version')) {

@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers\Role;
+
+use App\Http\Controllers\Role\Controllers\Admin\RoleController;
+use Sedehi\Artist\Menu;
+use Sedehi\Artist\Resource;
+
+class RoleResource extends Resource
+{
+    public function menu()
+    {
+        return [
+            Menu::make()
+                ->title(trans('artist::artist.management_group'))
+                ->permission('role.rolecontroller.index')
+                ->url(action([RoleController::class,'index'])),
+        ];
+    }
+
+    public function roles()
+    {
+        return [
+            'role' => [
+                'title'  => trans('artist::artist.management_group'),
+                'access' => [
+                    'RoleController' => [
+                        trans('artist::artist.list')   => 'index',
+                        trans('artist::artist.create') => ['create', 'store'],
+                        trans('artist::artist.edit')   => ['edit', 'update'],
+                        trans('artist::artist.delete') => 'destroy',
+                    ],
+                ],
+            ],
+        ];
+    }
+}

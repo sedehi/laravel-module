@@ -14,7 +14,7 @@ class MakeTest extends TestMakeCommand implements ModuleName
     public function __construct($files)
     {
         $this->signature .= '
-        {--section= : The name of the section}
+        {--module= : The name of the module}
         {--in : Interactive mode}
         {--crud : Generate a crud test}
         {--model= : Name of the model crud test}
@@ -64,7 +64,7 @@ class MakeTest extends TestMakeCommand implements ModuleName
             return parent::getDefaultNamespace($rootNamespace);
         }
 
-        $namespace = $rootNamespace.'\Http\\Controllers\\'.Str::studly($this->option('module')).'\tests';
+        $namespace = $rootNamespace.'\Modules\\'.Str::studly($this->option('module')).'\tests';
 
         if ($this->option('admin')) {
             $namespace .= '\Admin';
@@ -126,7 +126,7 @@ class MakeTest extends TestMakeCommand implements ModuleName
 
     protected function replaceModel(&$stub)
     {
-        $modelClass = $this->laravel->getNamespace().'Http\\Controllers\\'.Str::studly($this->option('module')).'\\Models\\'.Str::studly($this->option('model'));
+        $modelClass = $this->laravel->getNamespace().'\Modules\\'.Str::studly($this->option('module')).'\\Models\\'.Str::studly($this->option('model'));
 
         $stub = str_replace(
             ['DummyFullModelClass', 'DummyModelClass'],

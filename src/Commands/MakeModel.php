@@ -27,7 +27,7 @@ class MakeModel extends ModelMakeCommand implements ModuleName
         $this->call('make:factory', [
             'name' => "{$factory}Factory",
             '--model' => $this->qualifyClass($this->getNameInput()),
-            '--section' => Str::studly($this->option('module')),
+            '--module' => Str::studly($this->option('module')),
         ]);
     }
 
@@ -40,7 +40,7 @@ class MakeModel extends ModelMakeCommand implements ModuleName
         $this->call('make:migration', [
             'name' => "create_{$table}_table",
             '--create' => $table,
-            '--section' => Str::studly($this->option('module')),
+            '--module' => Str::studly($this->option('module')),
         ]);
     }
 }

@@ -46,9 +46,9 @@ class MakeSeeder extends SeederMakeCommand implements ModuleName
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        $namespace = $rootNamespace.'\Http';
+        $namespace = $rootNamespace;
         if ($this->option('module') !== null) {
-            $namespace .= '\Controllers\\'.Str::studly($this->option('module'));
+            $namespace .= '\Modules\\'.Str::studly($this->option('module'));
         }
 
         return $namespace.'\database\seeds';
