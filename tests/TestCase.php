@@ -2,7 +2,6 @@
 
 namespace Sedehi\LaravelModule\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Sedehi\LaravelModule\LaravelModuleServiceProvider;
 

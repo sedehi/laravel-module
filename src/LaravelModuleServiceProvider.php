@@ -208,6 +208,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             return new MakeCrud($app['files']);
         });
     }
+
     protected function registerViewMakeCommand()
     {
         $this->app->singleton('command.viewmake', function ($app) {
