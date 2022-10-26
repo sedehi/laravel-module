@@ -34,15 +34,15 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
         $this->devCommands = array_merge(
             $this->devCommands,
             [
-                'SectionMake' => MakeModule::class,
-                'SubsectionMake' => MakeCrud::class,
+                'ModuleMake' => MakeModule::class,
+                'CrudMake' => MakeCrud::class,
                 'ViewMake' => MakeView::class,
             ]
         );
 
-//        if (class_exists(\Illuminate\Database\MigrationServiceProvider::class)) {
-//            $this->app->register(MigrationServiceProvider::class);
-//        }
+        if (class_exists(\Illuminate\Database\MigrationServiceProvider::class)) {
+            $this->app->register(MigrationServiceProvider::class);
+        }
 
         parent::register();
     }
@@ -137,7 +137,6 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
     protected function registerCastMakeCommand()
     {
         $version = explode('.', $this->app->version());
-
         if (reset($version) >= 7) {
             $this->app->singleton('command.cast.make', function ($app) {
                 return new MakeCast($app['files']);
@@ -193,6 +192,26 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
     {
         $this->app->singleton('command.test.make', function ($app) {
             return new MakeTest($app['files']);
+        });
+    }
+
+    protected function registerModuleMakeCommand()
+    {
+        $this->app->singleton('command.module.make', function ($app) {
+            return new MakeModule($app['files']);
+        });
+    }
+
+    protected function registerCrudMakeCommand()
+    {
+        $this->app->singleton('command.crud.make', function ($app) {
+            return new MakeCrud($app['files']);
+        });
+    }
+    protected function registerViewMakeCommand()
+    {
+        $this->app->singleton('command.viewmake', function ($app) {
+            return new MakeView($app['files']);
         });
     }
 }
