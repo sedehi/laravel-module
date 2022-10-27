@@ -16,6 +16,7 @@ use Illuminate\Foundation\Console\NotificationMakeCommand;
 use Illuminate\Foundation\Console\ObserverMakeCommand;
 use Illuminate\Foundation\Console\PolicyMakeCommand;
 use Illuminate\Foundation\Console\RequestMakeCommand;
+use Illuminate\Foundation\Console\ResourceMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -186,13 +187,14 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             return new MakeRequest($app['files']);
         });
     }
-//
-//    protected function registerResourceMakeCommand()
-//    {
-//        $this->app->singleton('command.resource.make', function ($app) {
-//            return new MakeResource($app['files']);
-//        });
-//    }
+
+    protected function registerResourceMakeCommand()
+    {
+        $abstract = $this->abstractName('command.request.make', ResourceMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
+            return new MakeResource($app['files']);
+        });
+    }
 //
 //    protected function registerControllerMakeCommand()
 //    {
