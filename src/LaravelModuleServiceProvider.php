@@ -2,7 +2,10 @@
 
 namespace Sedehi\LaravelModule;
 
-use Illuminate\Database\Console\Migrations\MigrateMakeCommand;
+use Illuminate\Database\Console\Factories\FactoryMakeCommand;
+use Illuminate\Foundation\Console\CastMakeCommand;
+use Illuminate\Foundation\Console\EventMakeCommand;
+use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -15,7 +18,6 @@ use Sedehi\LaravelModule\Commands\MakeFactory;
 use Sedehi\LaravelModule\Commands\MakeJob;
 use Sedehi\LaravelModule\Commands\MakeListener;
 use Sedehi\LaravelModule\Commands\MakeMail;
-use Sedehi\LaravelModule\Commands\MakeMigration;
 use Sedehi\LaravelModule\Commands\MakeModel;
 use Sedehi\LaravelModule\Commands\MakeModule;
 use Sedehi\LaravelModule\Commands\MakeNotification;
@@ -27,9 +29,12 @@ use Sedehi\LaravelModule\Commands\MakeRule;
 use Sedehi\LaravelModule\Commands\MakeSeeder;
 use Sedehi\LaravelModule\Commands\MakeTest;
 use Sedehi\LaravelModule\Commands\MakeView;
+use Sedehi\LaravelModule\Traits\AbstractName;
 
 class LaravelModuleServiceProvider extends ArtisanServiceProvider
 {
+    use AbstractName;
+
     public function register()
     {
         $this->devCommands = array_merge(
@@ -51,21 +56,24 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerModelMakeCommand()
     {
-        $this->app->singleton('command.model.make', function ($app) {
+        $abstract = $this->abstractName('command.model.make',ModelMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeModel($app['files']);
         });
     }
 
     protected function registerFactoryMakeCommand()
     {
-        $this->app->singleton('command.factory.make', function ($app) {
+        $abstract = $this->abstractName('command.factory.make',FactoryMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeFactory($app['files']);
         });
     }
 
     protected function registerEventMakeCommand()
     {
-        $this->app->singleton('command.event.make', function ($app) {
+        $abstract = $this->abstractName('command.event.make',EventMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeEvent($app['files']);
         });
     }
@@ -128,14 +136,10 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerCastMakeCommand()
     {
-        $version = explode('.', $this->app->version());
-        if (reset($version) >= 7) {
-            $this->app->singleton('command.cast.make', function ($app) {
-                return new MakeCast($app['files']);
-            });
-
-            return;
-        }
+        $abstract = $this->abstractName('command.event.make',CastMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
+            return new MakeCast($app['files']);
+        });
     }
 
     protected function registerExceptionMakeCommand()

@@ -48,8 +48,8 @@ trait Interactive
         }
 
         if ($this->implements(ModuleName::class)) {
-            $sectionName = $this->ask('Enter section name: [optional]');
-            $this->input->setOption('section', $sectionName);
+            $sectionName = $this->ask('Enter module name: [optional]');
+            $this->input->setOption('module', $sectionName);
         }
 
         // controller related checks
@@ -58,7 +58,7 @@ trait Interactive
                 'invokable',
                 'resource',
             ];
-            if ($this->option('section')) {
+            if ($this->option('module')) {
                 $choices = array_merge($choices, [
                     'crud',
                     'upload',
@@ -86,7 +86,7 @@ trait Interactive
             $unit = $this->confirm('Do you want to create a unit test class ?');
             $this->input->setOption('unit', $unit);
 
-            if ($this->option('section')) {
+            if ($this->option('module')) {
                 $crud = $this->confirm('Do you want to create a crud test ?');
                 $this->input->setOption('crud', $crud);
                 if ($crud) {
