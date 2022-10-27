@@ -1,1 +1,1 @@
-@extends('artist::crud.index')
+@extends('tabler::crud.index')

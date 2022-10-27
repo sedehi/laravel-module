@@ -57,7 +57,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             [
                 //                'ModuleMake' => MakeModule::class,
                 //                'CrudMake' => MakeCrud::class,
-                //                'ViewMake' => MakeView::class,
+                'ViewMake' => MakeView::class,
             ]
         );
 
@@ -234,8 +234,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 //
 //    protected function registerViewMakeCommand()
 //    {
-//        $this->app->singleton('command.viewmake', function ($app) {
-//            return new MakeView($app['files']);
+//        $this->app->singleton(MakeView::class, function () {
+//            return new MakeView();
 //        });
 //    }
 }
