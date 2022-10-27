@@ -3,6 +3,7 @@
 namespace Sedehi\LaravelModule;
 
 use Illuminate\Database\Console\Factories\FactoryMakeCommand;
+use Illuminate\Database\Console\Seeds\SeederMakeCommand;
 use Illuminate\Foundation\Console\CastMakeCommand;
 use Illuminate\Foundation\Console\ChannelMakeCommand;
 use Illuminate\Foundation\Console\ConsoleMakeCommand;
@@ -174,13 +175,14 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             return new MakeRule($app['files']);
         });
     }
-//
-//    protected function registerSeederMakeCommand()
-//    {
-//        $this->app->singleton('command.seeder.make', function ($app) {
-//            return new MakeSeeder($app['files'], $app['composer']);
-//        });
-//    }
+
+    protected function registerSeederMakeCommand()
+    {
+        $abstract = $this->abstractName('command.seeder.make', SeederMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
+            return new MakeSeeder($app['files'], $app['composer']);
+        });
+    }
 
     protected function registerRequestMakeCommand()
     {
