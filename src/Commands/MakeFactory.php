@@ -17,7 +17,7 @@ class MakeFactory extends FactoryMakeCommand implements ModuleName, ModelName
     {
         $name = str_replace(['\\', '/'], '', $this->argument('name'));
         if ($this->option('module') !== null) {
-            return app_path('Http/Controllers/'.Str::studly($this->option('module'))."/database/factories/{$name}.php");
+            return app_path('Modules/'.Str::studly($this->option('module'))."/database/factories/{$name}.php");
         }
 
         return $this->laravel->databasePath()."/factories/{$name}.php";
