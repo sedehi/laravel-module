@@ -13,6 +13,7 @@ use Illuminate\Foundation\Console\ListenerMakeCommand;
 use Illuminate\Foundation\Console\MailMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Console\NotificationMakeCommand;
+use Illuminate\Foundation\Console\ObserverMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -132,7 +133,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerObserverMakeCommand()
     {
-        $this->app->singleton('command.observer.make', function ($app) {
+        $abstract = $this->abstractName('command.observer.make', ObserverMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeObserver($app['files']);
         });
     }
