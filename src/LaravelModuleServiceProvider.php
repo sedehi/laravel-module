@@ -9,6 +9,7 @@ use Illuminate\Foundation\Console\ConsoleMakeCommand;
 use Illuminate\Foundation\Console\EventMakeCommand;
 use Illuminate\Foundation\Console\ExceptionMakeCommand;
 use Illuminate\Foundation\Console\JobMakeCommand;
+use Illuminate\Foundation\Console\ListenerMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
@@ -83,7 +84,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerListenerMakeCommand()
     {
-        $this->app->singleton('command.listener.make', function ($app) {
+        $abstract = $this->abstractName('command.listener.make', ListenerMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeListener($app['files']);
         });
     }
