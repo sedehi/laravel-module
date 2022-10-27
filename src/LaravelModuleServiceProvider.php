@@ -15,6 +15,7 @@ use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Console\NotificationMakeCommand;
 use Illuminate\Foundation\Console\ObserverMakeCommand;
 use Illuminate\Foundation\Console\PolicyMakeCommand;
+use Illuminate\Foundation\Console\RequestMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -180,7 +181,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerRequestMakeCommand()
     {
-        $this->app->singleton('command.request.make', function ($app) {
+        $abstract = $this->abstractName('command.request.make', RequestMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeRequest($app['files']);
         });
     }
