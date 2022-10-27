@@ -2,6 +2,7 @@
 
 namespace Sedehi\LaravelModule;
 
+use Illuminate\Database\Console\Migrations\MigrateMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -40,6 +41,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             ]
         );
 
+
         if (class_exists(\Illuminate\Database\MigrationServiceProvider::class)) {
             $this->app->register(MigrationServiceProvider::class);
         }
@@ -58,16 +60,6 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
     {
         $this->app->singleton('command.factory.make', function ($app) {
             return new MakeFactory($app['files']);
-        });
-    }
-
-    protected function registerMigrateMakeCommand()
-    {
-        $this->app->singleton('command.migrate.make', function ($app) {
-            $creator = $app['migration.creator'];
-            $composer = $app['composer'];
-
-            return new MakeMigration($creator, $composer);
         });
     }
 
