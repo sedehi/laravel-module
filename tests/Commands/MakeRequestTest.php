@@ -16,7 +16,7 @@ class MakeRequestTest extends TestCase
             'name' => $this->sampleName,
         ]);
 
-        $this->assertFileExists(app_path("Http/Requests/{$this->sampleName}.php"));
+        $this->assertFileExists(app_path("Requests/{$this->sampleName}.php"));
 
         $this->artisan('make:request', [
             'name' => $this->sampleName,

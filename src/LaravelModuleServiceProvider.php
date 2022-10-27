@@ -50,9 +50,9 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
         $this->devCommands = array_merge(
             $this->devCommands,
             [
-                'ModuleMake' => MakeModule::class,
-                'CrudMake' => MakeCrud::class,
-                'ViewMake' => MakeView::class,
+//                'ModuleMake' => MakeModule::class,
+//                'CrudMake' => MakeCrud::class,
+//                'ViewMake' => MakeView::class,
             ]
         );
 
@@ -151,7 +151,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerCastMakeCommand()
     {
-        $abstract = $this->abstractName('command.event.make', CastMakeCommand::class);
+        $abstract = $this->abstractName('command.cast.make', CastMakeCommand::class);
         $this->app->singleton($abstract, function ($app) {
             return new MakeCast($app['files']);
         });
@@ -165,19 +165,19 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
         });
     }
 
-    protected function registerRuleMakeCommand()
-    {
-        $this->app->singleton('command.rule.make', function ($app) {
-            return new MakeRule($app['files']);
-        });
-    }
-
-    protected function registerSeederMakeCommand()
-    {
-        $this->app->singleton('command.seeder.make', function ($app) {
-            return new MakeSeeder($app['files'], $app['composer']);
-        });
-    }
+//    protected function registerRuleMakeCommand()
+//    {
+//        $this->app->singleton('command.rule.make', function ($app) {
+//            return new MakeRule($app['files']);
+//        });
+//    }
+//
+//    protected function registerSeederMakeCommand()
+//    {
+//        $this->app->singleton('command.seeder.make', function ($app) {
+//            return new MakeSeeder($app['files'], $app['composer']);
+//        });
+//    }
 
     protected function registerRequestMakeCommand()
     {
@@ -186,46 +186,46 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             return new MakeRequest($app['files']);
         });
     }
-
-    protected function registerResourceMakeCommand()
-    {
-        $this->app->singleton('command.resource.make', function ($app) {
-            return new MakeResource($app['files']);
-        });
-    }
-
-    protected function registerControllerMakeCommand()
-    {
-        $this->app->singleton('command.controller.make', function ($app) {
-            return new MakeController($app['files']);
-        });
-    }
-
-    protected function registerTestMakeCommand()
-    {
-        $this->app->singleton('command.test.make', function ($app) {
-            return new MakeTest($app['files']);
-        });
-    }
-
-    protected function registerModuleMakeCommand()
-    {
-        $this->app->singleton('command.module.make', function ($app) {
-            return new MakeModule($app['files']);
-        });
-    }
-
-    protected function registerCrudMakeCommand()
-    {
-        $this->app->singleton('command.crud.make', function ($app) {
-            return new MakeCrud($app['files']);
-        });
-    }
-
-    protected function registerViewMakeCommand()
-    {
-        $this->app->singleton('command.viewmake', function ($app) {
-            return new MakeView($app['files']);
-        });
-    }
+//
+//    protected function registerResourceMakeCommand()
+//    {
+//        $this->app->singleton('command.resource.make', function ($app) {
+//            return new MakeResource($app['files']);
+//        });
+//    }
+//
+//    protected function registerControllerMakeCommand()
+//    {
+//        $this->app->singleton('command.controller.make', function ($app) {
+//            return new MakeController($app['files']);
+//        });
+//    }
+//
+//    protected function registerTestMakeCommand()
+//    {
+//        $this->app->singleton('command.test.make', function ($app) {
+//            return new MakeTest($app['files']);
+//        });
+//    }
+//
+//    protected function registerModuleMakeCommand()
+//    {
+//        $this->app->singleton('command.module.make', function ($app) {
+//            return new MakeModule($app['files']);
+//        });
+//    }
+//
+//    protected function registerCrudMakeCommand()
+//    {
+//        $this->app->singleton('command.crud.make', function ($app) {
+//            return new MakeCrud($app['files']);
+//        });
+//    }
+//
+//    protected function registerViewMakeCommand()
+//    {
+//        $this->app->singleton('command.viewmake', function ($app) {
+//            return new MakeView($app['files']);
+//        });
+//    }
 }
