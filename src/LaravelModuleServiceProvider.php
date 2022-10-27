@@ -7,6 +7,7 @@ use Illuminate\Foundation\Console\CastMakeCommand;
 use Illuminate\Foundation\Console\ChannelMakeCommand;
 use Illuminate\Foundation\Console\ConsoleMakeCommand;
 use Illuminate\Foundation\Console\EventMakeCommand;
+use Illuminate\Foundation\Console\ExceptionMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
@@ -147,7 +148,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerExceptionMakeCommand()
     {
-        $this->app->singleton('command.exception.make', function ($app) {
+        $abstract = $this->abstractName('command.exception.make', ExceptionMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeException($app['files']);
         });
     }
