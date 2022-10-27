@@ -232,10 +232,10 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 //        });
 //    }
 //
-//    protected function registerViewMakeCommand()
-//    {
-//        $this->app->singleton(MakeView::class, function () {
-//            return new MakeView();
-//        });
-//    }
+    protected function registerViewMakeCommand()
+    {
+        $this->app->singleton(MakeView::class, function () {
+            return new MakeView();
+        });
+    }
 }
