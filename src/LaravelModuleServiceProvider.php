@@ -217,6 +217,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             return new MakeTest($app['files']);
         });
     }
+
 //
 //    protected function registerModuleMakeCommand()
 //    {
