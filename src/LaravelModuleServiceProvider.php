@@ -14,6 +14,7 @@ use Illuminate\Foundation\Console\MailMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Console\NotificationMakeCommand;
 use Illuminate\Foundation\Console\ObserverMakeCommand;
+use Illuminate\Foundation\Console\PolicyMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -141,7 +142,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerPolicyMakeCommand()
     {
-        $this->app->singleton('command.policy.make', function ($app) {
+        $abstract = $this->abstractName('command.policy.make', PolicyMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakePolicy($app['files']);
         });
     }
