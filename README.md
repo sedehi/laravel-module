@@ -23,13 +23,6 @@ You can install the package via composer:
 composer require sedehi/laravel-module
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-module-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
