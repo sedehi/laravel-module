@@ -2,7 +2,6 @@
 
 namespace Sedehi\LaravelModule;
 
-use Illuminate\Database\Console\Migrations\MigrateMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -15,7 +14,6 @@ use Sedehi\LaravelModule\Commands\MakeFactory;
 use Sedehi\LaravelModule\Commands\MakeJob;
 use Sedehi\LaravelModule\Commands\MakeListener;
 use Sedehi\LaravelModule\Commands\MakeMail;
-use Sedehi\LaravelModule\Commands\MakeMigration;
 use Sedehi\LaravelModule\Commands\MakeModel;
 use Sedehi\LaravelModule\Commands\MakeModule;
 use Sedehi\LaravelModule\Commands\MakeNotification;
@@ -40,7 +38,6 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
                 'ViewMake' => MakeView::class,
             ]
         );
-
 
         if (class_exists(\Illuminate\Database\MigrationServiceProvider::class)) {
             $this->app->register(MigrationServiceProvider::class);

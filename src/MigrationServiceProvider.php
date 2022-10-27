@@ -11,7 +11,7 @@ class MigrationServiceProvider extends LaravelMigrationServiceProvider
     protected function registerMigrateMakeCommand()
     {
         $abstractName = 'command.migrate.make';
-        if(version_compare($this->app->version(),'9','>=')){
+        if (version_compare($this->app->version(), '9', '>=')) {
             $abstractName = MigrateMakeCommand::class;
         }
         $this->app->singleton($abstractName, function ($app) {
