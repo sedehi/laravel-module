@@ -15,7 +15,7 @@ class MakeModel extends ModelMakeCommand implements ModuleName
     protected function getDefaultNamespace($rootNamespace)
     {
         if ($this->option('module') !== null) {
-            return $rootNamespace.'\Http\Controllers\\'.Str::studly($this->option('module')).'\\Models';
+            return $rootNamespace.'\Modules\\'.Str::studly($this->option('module')).'\\Models';
         }
 
         return $rootNamespace;

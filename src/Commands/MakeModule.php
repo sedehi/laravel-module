@@ -13,14 +13,14 @@ class MakeModule extends Command
      *
      * @var string
      */
-    protected $signature = 'make:module {name : The name of the section}';
+    protected $signature = 'make:module {name : The name of the module}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new section';
+    protected $description = 'Create a new module';
 
     /**
      * Execute the console command.
@@ -29,12 +29,12 @@ class MakeModule extends Command
      */
     public function handle()
     {
-        if (! File::isDirectory(app_path('Http/Controllers/'.Str::studly($this->argument('name'))))) {
-            File::makeDirectory(app_path('Http/Controllers/'.Str::studly($this->argument('name'))), 0775, true);
+        if (! File::isDirectory(app_path('Modules/'.Str::studly($this->argument('name'))))) {
+            File::makeDirectory(app_path('Modules/'.Str::studly($this->argument('name'))), 0775, true);
         }
 
         $this->call('make:crud', [
-            'parent' => strtolower($this->argument('name')),
+            'module' => strtolower($this->argument('name')),
             'name' => strtolower($this->argument('name')),
         ]);
     }

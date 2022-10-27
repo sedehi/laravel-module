@@ -1,4 +1,4 @@
 
-Route::group(['namespace' =>'{{{name}}}\Controllers\Admin'], function () {
-    Route::resource('{{{url}}}', '{{{controller}}}');
-});
+use App\Modules\{{{name}}}\Controllers\Admin\{{{controller}}};
+
+Route::resource('{{{url}}}', {{{controller}}}::class);

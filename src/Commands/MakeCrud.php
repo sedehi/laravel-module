@@ -13,7 +13,9 @@ class MakeCrud extends Command
      *
      * @var string
      */
-    protected $signature = 'make:crud {module : The name of the module} {name : The name of the crud}';
+    protected $signature = 'make:crud 
+                            {module : The name of the module} 
+                            {name : The name of the crud}';
 
     /**
      * The console command description.
@@ -73,7 +75,6 @@ class MakeCrud extends Command
             'name' => ucfirst($this->argument('name')).'Controller',
             '--admin' => true,
             '--crud' => true,
-            '--model' => $this->argument('name'),
         ]);
         $this->call('make:view', [
             'name' => strtolower($this->argument('name')),
@@ -86,11 +87,12 @@ class MakeCrud extends Command
             '--module' => $this->argument('module'),
             'name' => ucfirst($this->argument('name')).'Controller',
             '--upload' => true,
-            '--model' => $this->argument('name'),
             '--admin' => true,
         ]);
         $this->call('make:view', [
             'name' => strtolower($this->argument('name')),
+            'module' => $this->argument('module'),
+            'controller' => ucfirst($this->argument('name')).'Controller',
             '--upload' => true,
         ]);
     }
@@ -147,7 +149,7 @@ class MakeCrud extends Command
                 $data = str_replace('{{{name}}}', ucfirst($this->argument('module')), $data);
                 $data = str_replace('{{{controller}}}', ucfirst($this->argument('name')).'Controller', $data);
                 $data = str_replace('{{{url}}}', strtolower($this->argument('name')), $data);
-                File::append(app_path('Http/Controllers/'.ucfirst($this->argument('module')).'/routes/'.'admin.php'), $data);
+                File::append(app_path('Modules/'.ucfirst($this->argument('module')).'/routes/'.'admin.php'), $data);
                 $this->info('admin route created successfully.');
             }
         }

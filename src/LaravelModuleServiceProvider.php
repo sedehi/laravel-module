@@ -55,8 +55,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
         $this->devCommands = array_merge(
             $this->devCommands,
             [
-                //                'ModuleMake' => MakeModule::class,
-                //                'CrudMake' => MakeCrud::class,
+                'ModuleMake' => MakeModule::class,
+                'CrudMake' => MakeCrud::class,
                 'ViewMake' => MakeView::class,
             ]
         );
@@ -196,7 +196,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerResourceMakeCommand()
     {
-        $abstract = $this->abstractName('command.request.make', ResourceMakeCommand::class);
+        $abstract = $this->abstractName('command.resource.make', ResourceMakeCommand::class);
         $this->app->singleton($abstract, function ($app) {
             return new MakeResource($app['files']);
         });
@@ -218,21 +218,20 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
         });
     }
 
-//
-//    protected function registerModuleMakeCommand()
-//    {
-//        $this->app->singleton('command.module.make', function ($app) {
-//            return new MakeModule($app['files']);
-//        });
-//    }
-//
-//    protected function registerCrudMakeCommand()
-//    {
-//        $this->app->singleton('command.crud.make', function ($app) {
-//            return new MakeCrud($app['files']);
-//        });
-//    }
-//
+    protected function registerModuleMakeCommand()
+    {
+        $this->app->singleton(MakeModule::class, function () {
+            return new MakeModule();
+        });
+    }
+
+    protected function registerCrudMakeCommand()
+    {
+        $this->app->singleton(MakeCrud::class, function () {
+            return new MakeCrud();
+        });
+    }
+
     protected function registerViewMakeCommand()
     {
         $this->app->singleton(MakeView::class, function () {
