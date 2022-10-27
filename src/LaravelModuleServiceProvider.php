@@ -10,6 +10,7 @@ use Illuminate\Foundation\Console\EventMakeCommand;
 use Illuminate\Foundation\Console\ExceptionMakeCommand;
 use Illuminate\Foundation\Console\JobMakeCommand;
 use Illuminate\Foundation\Console\ListenerMakeCommand;
+use Illuminate\Foundation\Console\MailMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
@@ -116,7 +117,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerMailMakeCommand()
     {
-        $this->app->singleton('command.mail.make', function ($app) {
+        $abstract = $this->abstractName('command.mail.make', MailMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeMail($app['files']);
         });
     }
