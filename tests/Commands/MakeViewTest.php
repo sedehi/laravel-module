@@ -12,7 +12,7 @@ class MakeViewTest extends TestCase
      */
     public function it_can_make_crud_view_files()
     {
-        $this->sampleName = $this->sampleName.'1';
+        $this->sampleName = strtolower($this->sampleName);
         $this->artisan('make:view', [
             'module' => $this->moduleName,
             'name' => $this->sampleName,
@@ -31,7 +31,7 @@ class MakeViewTest extends TestCase
      */
     public function it_can_make_crud_with_upload_view_files()
     {
-        $this->sampleName = $this->sampleName.'2';
+        $this->sampleName = strtolower($this->sampleName);
         $this->artisan('make:view', [
             'module' => $this->moduleName,
             'name' => $this->sampleName,
