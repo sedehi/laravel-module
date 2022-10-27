@@ -52,9 +52,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             ]
         );
 
-        if (class_exists(\Illuminate\Database\MigrationServiceProvider::class)) {
-            $this->app->register(MigrationServiceProvider::class);
-        }
+        $this->app->register(MigrationServiceProvider::class);
 
         parent::register();
     }

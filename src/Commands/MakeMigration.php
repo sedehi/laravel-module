@@ -22,7 +22,7 @@ class MakeMigration extends MigrateMakeCommand implements ModuleName
     {
         $module = (Str::studly($this->input->getOption('module')));
         if ($module !== '') {
-            $path = $this->laravel->basePath().'/app/'.$module.'/database/migrations';
+            $path = $this->laravel->basePath().'/app/Modules/'.$module.'/database/migrations';
             $this->makeDirectory($path);
 
             return $path;
