@@ -50,9 +50,9 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
         $this->devCommands = array_merge(
             $this->devCommands,
             [
-//                'ModuleMake' => MakeModule::class,
-//                'CrudMake' => MakeCrud::class,
-//                'ViewMake' => MakeView::class,
+                //                'ModuleMake' => MakeModule::class,
+                //                'CrudMake' => MakeCrud::class,
+                //                'ViewMake' => MakeView::class,
             ]
         );
 
