@@ -10,7 +10,7 @@ class MakeMailTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_new_mail_class()
+    public function it_can_make_a_new_mail_class()
     {
         $this->artisan('make:mail', [
             'name' => $this->sampleName,

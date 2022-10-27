@@ -10,7 +10,7 @@ class MakeFactoryTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_new_factory()
+    public function it_can_make_a_new_factory()
     {
         $this->artisan('make:factory', [
             'name' => $this->sampleName,

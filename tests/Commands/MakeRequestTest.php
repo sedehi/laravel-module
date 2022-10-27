@@ -10,7 +10,7 @@ class MakeRequestTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_new_request_class()
+    public function it_can_make_a_new_request_class()
     {
         $this->artisan('make:request', [
             'name' => $this->sampleName,
@@ -30,7 +30,7 @@ class MakeRequestTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_request_class_type_option()
+    public function it_can_make_a_request_class_type_option()
     {
         // admin type
 
@@ -76,7 +76,7 @@ class MakeRequestTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_request_class_interactive()
+    public function it_can_make_request_class_interactive()
     {
         $this->artisan('make:request', [
             'name' => $this->sampleName,

@@ -10,7 +10,7 @@ class MakeMigrationTest extends TestCase
      * @return void
      * @test
      */
-    public function make_migration_with_section_option()
+    public function it_can_make_migration_class()
     {
         $name = 'create_test_table';
         $this->artisan('make:migration', [

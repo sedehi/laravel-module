@@ -10,7 +10,7 @@ class MakePolicyTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_new_policy_class()
+    public function it_can_make_a_new_policy_class()
     {
         $this->artisan('make:policy', [
             'name' => $this->sampleName,

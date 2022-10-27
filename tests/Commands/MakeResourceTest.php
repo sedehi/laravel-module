@@ -10,7 +10,7 @@ class MakeResourceTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_resource_class()
+    public function it_can_make_a_resource_class()
     {
         $this->artisan('make:resource', [
             'name' => $this->sampleName,
@@ -30,7 +30,7 @@ class MakeResourceTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_resource_class_with_api_version_option()
+    public function it_can_make_a_resource_class_with_api_version_option()
     {
         $this->artisan('make:resource', [
             'name' => $this->sampleName,
@@ -45,7 +45,7 @@ class MakeResourceTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_resource_class_interactive()
+    public function it_can_make_a_resource_class_interactive()
     {
         $this->artisan('make:resource', [
             'name' => $this->sampleName,

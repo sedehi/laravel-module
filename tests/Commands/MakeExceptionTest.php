@@ -10,7 +10,7 @@ class MakeExceptionTest extends TestCase
      * @return void
      * @test
      */
-    public function it_make_a_new_exception_class()
+    public function it_can_make_a_new_exception_class()
     {
         $this->artisan('make:exception', [
             'name' => $this->sampleName,
