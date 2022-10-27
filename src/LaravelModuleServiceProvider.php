@@ -4,6 +4,7 @@ namespace Sedehi\LaravelModule;
 
 use Illuminate\Database\Console\Factories\FactoryMakeCommand;
 use Illuminate\Foundation\Console\CastMakeCommand;
+use Illuminate\Foundation\Console\ChannelMakeCommand;
 use Illuminate\Foundation\Console\EventMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
@@ -86,7 +87,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerChannelMakeCommand()
     {
-        $this->app->singleton('command.channel.make', function ($app) {
+        $abstract = $this->abstractName('command.channel.make', ChannelMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeChannel($app['files']);
         });
     }
