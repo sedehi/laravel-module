@@ -220,8 +220,8 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
 
     protected function buildRequestReplacements($replace)
     {
+        $requestClass = $this->getRequestClass();
         if ($this->option('module')) {
-            $requestClass = $this->getRequestClass();
             if (! class_exists($requestClass)) {
                 if ($this->confirm("A {$requestClass} Request does not exist. Do you want to generate it?", true)) {
                     $this->call('make:request', [

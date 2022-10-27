@@ -182,7 +182,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
     {
         $abstract = $this->abstractName('command.seeder.make', SeederMakeCommand::class);
         $this->app->singleton($abstract, function ($app) {
-            return new MakeSeeder($app['files'], $app['composer']);
+            return new MakeSeeder($app['files']);
         });
     }
 
