@@ -9,7 +9,9 @@ use Sedehi\LaravelModule\LaravelModuleServiceProvider;
 class TestCase extends Orchestra
 {
     public $moduleName = 'TestModule';
+
     public $sampleName = 'FakeName';
+
     protected function getPackageProviders($app)
     {
         return [

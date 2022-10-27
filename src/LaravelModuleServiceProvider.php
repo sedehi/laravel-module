@@ -55,7 +55,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerModelMakeCommand()
     {
-        $abstract = $this->abstractName('command.model.make',ModelMakeCommand::class);
+        $abstract = $this->abstractName('command.model.make', ModelMakeCommand::class);
         $this->app->singleton($abstract, function ($app) {
             return new MakeModel($app['files']);
         });
@@ -63,7 +63,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerFactoryMakeCommand()
     {
-        $abstract = $this->abstractName('command.factory.make',FactoryMakeCommand::class);
+        $abstract = $this->abstractName('command.factory.make', FactoryMakeCommand::class);
         $this->app->singleton($abstract, function ($app) {
             return new MakeFactory($app['files']);
         });
@@ -71,7 +71,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerEventMakeCommand()
     {
-        $abstract = $this->abstractName('command.event.make',EventMakeCommand::class);
+        $abstract = $this->abstractName('command.event.make', EventMakeCommand::class);
         $this->app->singleton($abstract, function ($app) {
             return new MakeEvent($app['files']);
         });
@@ -135,7 +135,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerCastMakeCommand()
     {
-        $abstract = $this->abstractName('command.event.make',CastMakeCommand::class);
+        $abstract = $this->abstractName('command.event.make', CastMakeCommand::class);
         $this->app->singleton($abstract, function ($app) {
             return new MakeCast($app['files']);
         });

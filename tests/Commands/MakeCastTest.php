@@ -13,7 +13,7 @@ class MakeCastTest extends TestCase
     public function it_make_a_new_cast_class()
     {
         $this->artisan('make:cast', [
-            'name'      => $this->sampleName,
+            'name' => $this->sampleName,
             '--module' => $this->moduleName,
         ]);
 
@@ -27,10 +27,9 @@ class MakeCastTest extends TestCase
     public function it_can_make_cast_class_interactive()
     {
         $this->artisan('make:cast', [
-            'name'  => $this->sampleName,
-            '--in'  => true,
+            'name' => $this->sampleName,
+            '--in' => true,
         ])->expectsQuestion('Enter module name: [optional]', $this->moduleName)
             ->assertExitCode(0);
     }
-
 }
