@@ -19,6 +19,7 @@ use Illuminate\Foundation\Console\PolicyMakeCommand;
 use Illuminate\Foundation\Console\RequestMakeCommand;
 use Illuminate\Foundation\Console\ResourceMakeCommand;
 use Illuminate\Foundation\Console\RuleMakeCommand;
+use Illuminate\Foundation\Console\TestMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -199,6 +200,7 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
             return new MakeResource($app['files']);
         });
     }
+
 //
 //    protected function registerControllerMakeCommand()
 //    {
@@ -207,12 +209,13 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 //        });
 //    }
 //
-//    protected function registerTestMakeCommand()
-//    {
-//        $this->app->singleton('command.test.make', function ($app) {
-//            return new MakeTest($app['files']);
-//        });
-//    }
+    protected function registerTestMakeCommand()
+    {
+        $abstract = $this->abstractName('command.test.make', TestMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
+            return new MakeTest($app['files']);
+        });
+    }
 //
 //    protected function registerModuleMakeCommand()
 //    {

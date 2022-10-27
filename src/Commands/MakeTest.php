@@ -6,25 +6,28 @@ use Illuminate\Foundation\Console\TestMakeCommand;
 use Illuminate\Support\Str;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
 use Sedehi\LaravelModule\Traits\Interactive;
+use Symfony\Component\Console\Input\InputOption;
 
 class MakeTest extends TestMakeCommand implements ModuleName
 {
     use Interactive;
 
-    public function __construct($files)
+    protected function getOptions()
     {
-        $this->signature .= '
-        {--module= : The name of the module}
-        {--in : Interactive mode}
-        {--crud : Generate a crud test}
-        {--model= : Name of the model crud test}
-        {--controller= : Name of the controller for actions}
-        {--admin : Generate admin crud test}
-        {--site : Generate admin crud test}
-        {--api : Generate api crud test}
-        {--api-version= : Set api version for test}
-        ';
-        parent::__construct($files);
+        $options = parent::getOptions();
+        $options = array_merge($options, [
+            ['module', null, InputOption::VALUE_OPTIONAL, 'The name of the module'],
+            ['in', false, InputOption::VALUE_NONE, 'Interactive mode'],
+            ['crud', null, InputOption::VALUE_NONE, 'Generate a crud test'],
+            ['model', null, InputOption::VALUE_NONE, 'Name of the model crud test'],
+            ['controller', null, InputOption::VALUE_NONE, 'Name of the controller for actions'],
+            ['site', null, InputOption::VALUE_NONE, 'Generate admin crud test'],
+            ['admin', null, InputOption::VALUE_NONE, 'Generate admin crud test'],
+            ['api', null, InputOption::VALUE_NONE, 'Generate api crud test'],
+            ['api-version', null, InputOption::VALUE_OPTIONAL, 'Set api version for test'],
+        ]);
+
+        return $options;
     }
 
     public function handle()

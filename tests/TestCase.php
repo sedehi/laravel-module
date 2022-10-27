@@ -26,6 +26,6 @@ class TestCase extends Orchestra
 
     public function tearDown(): void
     {
-//        File::deleteDirectory(app_path('Modules/'.$this->moduleName));
+        File::deleteDirectory(app_path('Modules/'.$this->moduleName));
     }
 }
