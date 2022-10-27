@@ -12,6 +12,7 @@ use Illuminate\Foundation\Console\JobMakeCommand;
 use Illuminate\Foundation\Console\ListenerMakeCommand;
 use Illuminate\Foundation\Console\MailMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
+use Illuminate\Foundation\Console\NotificationMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
@@ -123,7 +124,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerNotificationMakeCommand()
     {
-        $this->app->singleton('command.notification.make', function ($app) {
+        $abstract = $this->abstractName('command.notification.make', NotificationMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeNotification($app['files']);
         });
     }
