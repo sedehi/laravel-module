@@ -4,29 +4,29 @@ namespace Sedehi\LaravelModule\Tests\Commands;
 
 use Sedehi\LaravelModule\Tests\TestCase;
 
-class MakeCommandTest extends TestCase
+class MakeEventTest extends TestCase
 {
     /**
      * @return void
      * @test
      */
-    public function it_make_a_new_command_class()
+    public function it_make_a_new_event_class()
     {
-        $this->artisan('make:command', [
+        $this->artisan('make:event', [
             'name' => $this->sampleName,
             '--module' => $this->moduleName,
         ]);
 
-        $this->assertFileExists(app_path('Modules/'.$this->moduleName."/Commands/{$this->sampleName}.php"));
+        $this->assertFileExists(app_path('Modules/'.$this->moduleName."/Events/{$this->sampleName}.php"));
     }
 
     /**
      * @return void
      * @test
      */
-    public function it_can_make_channel_class_interactive()
+    public function it_can_make_event_class_interactive()
     {
-        $this->artisan('make:command', [
+        $this->artisan('make:event', [
             'name' => $this->sampleName,
             '--in' => true,
         ])->expectsQuestion('Enter module name: [optional]', $this->moduleName)
