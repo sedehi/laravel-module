@@ -5,6 +5,7 @@ namespace Sedehi\LaravelModule;
 use Illuminate\Database\Console\Factories\FactoryMakeCommand;
 use Illuminate\Foundation\Console\CastMakeCommand;
 use Illuminate\Foundation\Console\ChannelMakeCommand;
+use Illuminate\Foundation\Console\ConsoleMakeCommand;
 use Illuminate\Foundation\Console\EventMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
@@ -95,7 +96,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerConsoleMakeCommand()
     {
-        $this->app->singleton('command.console.make', function ($app) {
+        $abstract = $this->abstractName('command.console.make', ConsoleMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeCommand($app['files']);
         });
     }
