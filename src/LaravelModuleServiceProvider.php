@@ -8,6 +8,7 @@ use Illuminate\Foundation\Console\ChannelMakeCommand;
 use Illuminate\Foundation\Console\ConsoleMakeCommand;
 use Illuminate\Foundation\Console\EventMakeCommand;
 use Illuminate\Foundation\Console\ExceptionMakeCommand;
+use Illuminate\Foundation\Console\JobMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Sedehi\LaravelModule\Commands\MakeCast;
@@ -105,7 +106,8 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
 
     protected function registerJobMakeCommand()
     {
-        $this->app->singleton('command.job.make', function ($app) {
+        $abstract = $this->abstractName('command.job.make', JobMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
             return new MakeJob($app['files']);
         });
     }
