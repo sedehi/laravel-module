@@ -21,6 +21,7 @@ use Illuminate\Foundation\Console\ResourceMakeCommand;
 use Illuminate\Foundation\Console\RuleMakeCommand;
 use Illuminate\Foundation\Console\TestMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
+use Illuminate\Routing\Console\ControllerMakeCommand;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
 use Sedehi\LaravelModule\Commands\MakeCommand;
@@ -201,14 +202,14 @@ class LaravelModuleServiceProvider extends ArtisanServiceProvider
         });
     }
 
-//
-//    protected function registerControllerMakeCommand()
-//    {
-//        $this->app->singleton('command.controller.make', function ($app) {
-//            return new MakeController($app['files']);
-//        });
-//    }
-//
+    protected function registerControllerMakeCommand()
+    {
+        $abstract = $this->abstractName('command.controller.make', ControllerMakeCommand::class);
+        $this->app->singleton($abstract, function ($app) {
+            return new MakeController($app['files']);
+        });
+    }
+
     protected function registerTestMakeCommand()
     {
         $abstract = $this->abstractName('command.test.make', TestMakeCommand::class);

@@ -37,7 +37,9 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
     {
         $namespace = $rootNamespace;
         if ($this->option('module')) {
-            $namespace .= '\\'.Str::studly($this->option('module')).'\\Controllers';
+            $namespace .= '\\Modules\\'.Str::studly($this->option('module')).'\\Controllers';
+        } else {
+            $namespace .= '\Http\Controllers';
         }
         if ($this->option('site')) {
             $namespace .= '\\Site';
@@ -130,7 +132,7 @@ class MakeController extends ControllerMakeCommand implements ModuleName, Contro
             if ($this->confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('make:model', [
                     'name' => $parentModelClass,
-                    '--section' => $this->option('module'),
+                    '--module' => $this->option('module'),
                 ]);
             }
         }
