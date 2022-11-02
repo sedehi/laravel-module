@@ -6,8 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 class LaravelModuleServiceProvider extends ServiceProvider
 {
-
-    public function boot(){
+    public function boot()
+    {
         $this->loadViews();
     }
 
@@ -27,7 +27,7 @@ class LaravelModuleServiceProvider extends ServiceProvider
         foreach (glob(app_path('Modules/*/views')) as $modulePath) {
             $module = explode('/', $modulePath);
             $module = $module[count($module) - 2];
-            view()->addNamespace($module, app_path('Modules/' . $module . '/views'));
+            view()->addNamespace($module, app_path('Modules/'.$module.'/views'));
         }
     }
 }
