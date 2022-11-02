@@ -2,7 +2,6 @@
 
 namespace Sedehi\LaravelModule\Commands;
 
-use Faker\Core\File;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
