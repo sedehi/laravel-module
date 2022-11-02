@@ -5,19 +5,16 @@ namespace Sedehi\LaravelModule;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
-
 class RouteServiceProvider extends ServiceProvider
 {
-
-
-    public function boot(){
+    public function boot()
+    {
         $this->routes(function () {
             $this->mapWebRoutes();
             $this->mapApiRoutes();
             $this->mapAdminRoutes();
         });
     }
-
 
     protected function mapAdminRoutes()
     {
@@ -63,5 +60,4 @@ class RouteServiceProvider extends ServiceProvider
                 }
             });
     }
-
 }
