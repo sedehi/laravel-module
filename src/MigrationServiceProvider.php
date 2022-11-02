@@ -11,6 +11,10 @@ class MigrationServiceProvider extends LaravelMigrationServiceProvider
 {
     use AbstractName;
 
+    public function boot(){
+        $this->loadMigration();
+    }
+
     protected function registerMigrateMakeCommand()
     {
         $abstract = $this->abstractName('command.migrate.make', MigrateMakeCommand::class);
@@ -20,5 +24,13 @@ class MigrationServiceProvider extends LaravelMigrationServiceProvider
 
             return new MakeMigration($creator, $composer);
         });
+    }
+
+
+    protected function loadMigration()
+    {
+        $migratePaths = glob(app_path('Modules/*/database/migrations'));
+        $migratePaths = array_merge($migratePaths, [database_path('migrations')]);
+        $this->loadMigrationsFrom($migratePaths);
     }
 }
