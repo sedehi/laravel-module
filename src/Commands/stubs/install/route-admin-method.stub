@@ -1,0 +1,14 @@
+
+    protected function mapModuleAdminRoutes()
+    {
+        Route::middleware('web')
+            ->group(function () {
+                Route::prefix('admin')
+                    ->group(function () {
+                        $routes = glob(app_path('Modules/*/routes/admin.php'));
+                        foreach ($routes as $route) {
+                            require $route;
+                        }
+                    });
+            });
+    }

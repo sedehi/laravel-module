@@ -1,0 +1,11 @@
+
+    protected function mapModuleWebRoutes()
+    {
+        Route::middleware('web')
+            ->group(function () {
+                $routes = glob(app_path('Modules/*/routes/web.php'));
+                foreach ($routes as $route) {
+                    require $route;
+                }
+            });
+    }

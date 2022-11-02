@@ -22,6 +22,7 @@ use Illuminate\Foundation\Console\RuleMakeCommand;
 use Illuminate\Foundation\Console\TestMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 use Illuminate\Routing\Console\ControllerMakeCommand;
+use Sedehi\LaravelModule\Commands\InstallCommand;
 use Sedehi\LaravelModule\Commands\MakeCast;
 use Sedehi\LaravelModule\Commands\MakeChannel;
 use Sedehi\LaravelModule\Commands\MakeCommand;
@@ -58,6 +59,8 @@ class CommandsServiceProvider extends ArtisanServiceProvider
                 'ModuleMake' => MakeModule::class,
                 'CrudMake' => MakeCrud::class,
                 'ViewMake' => MakeView::class,
+                'ModuleInstall'      =>  InstallCommand::class,
+
             ]
         );
 
@@ -236,6 +239,13 @@ class CommandsServiceProvider extends ArtisanServiceProvider
     {
         $this->app->singleton(MakeView::class, function () {
             return new MakeView();
+        });
+    }
+
+    protected function registerModuleInstallCommand()
+    {
+        $this->app->singleton(InstallCommand::class, function ($app) {
+            return new InstallCommand();
         });
     }
 }
