@@ -31,7 +31,7 @@ class MakeCrudTest extends TestCase
             ->expectsQuestion('Do you want to create migration ?', 'yes')
             ->expectsQuestion('What is table name?', 'test')
             ->expectsQuestion('Do you want to create route ?', 'yes')
-            ->assertOk();
+            ->assertExitCode(0);
 
         $lowerSampleName = strtolower($this->sampleName);
 
