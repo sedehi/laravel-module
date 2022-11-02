@@ -23,9 +23,8 @@ class InstallCommand extends Command
     protected $description = 'Install all of the module resources';
 
     /**
-     * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
@@ -59,5 +58,6 @@ class InstallCommand extends Command
         $str = Str::of(file_get_contents($providerPath))
             ->replace('$this->routes(function () {',PHP_EOL.'$this->routes(function () {'.PHP_EOL.'$this->mapModuleWebRoutes();');
         file_put_contents($providerPath,$str);
+
     }
 }
