@@ -23,25 +23,6 @@ You can install the package via composer:
 composer require sedehi/laravel-module
 ```
 
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-module-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-module-views"
-```
-
 ## Testing
 
 ```bash
