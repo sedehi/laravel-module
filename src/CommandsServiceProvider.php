@@ -59,7 +59,7 @@ class CommandsServiceProvider extends ArtisanServiceProvider
                 'ModuleMake' => MakeModule::class,
                 'CrudMake' => MakeCrud::class,
                 'ViewMake' => MakeView::class,
-                'ModuleInstall'      =>  InstallCommand::class,
+                'ModuleInstall' => InstallCommand::class,
 
             ]
         );
