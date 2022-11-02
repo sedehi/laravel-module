@@ -22,41 +22,39 @@ class InstallCommand extends Command
     protected $description = 'Install all of the module resources';
 
     /**
-     *
      * @return void
      */
     public function handle()
     {
         $providerPath = app_path('Providers/RouteServiceProvider.php');
         $str = Str::of(file_get_contents($providerPath));
-        $str = $str->beforeLast('}')->when(!$str->contains('mapModuleApiRoutes'),function($string){
-            return $string->append(file_get_contents(__DIR__ . '/stubs/install/route-api-method.stub').'}');
+        $str = $str->beforeLast('}')->when(! $str->contains('mapModuleApiRoutes'), function ($string) {
+            return $string->append(file_get_contents(__DIR__.'/stubs/install/route-api-method.stub').'}');
         });
-        file_put_contents($providerPath,$str);
+        file_put_contents($providerPath, $str);
 
         $str = Str::of(file_get_contents($providerPath));
-        $str = $str->when(!$str->contains('mapModuleAdminRoutes'),function($string){
-            return $string->beforeLast('}')->append(file_get_contents(__DIR__ . '/stubs/install/route-admin-method.stub').'}');
+        $str = $str->when(! $str->contains('mapModuleAdminRoutes'), function ($string) {
+            return $string->beforeLast('}')->append(file_get_contents(__DIR__.'/stubs/install/route-admin-method.stub').'}');
         });
-        file_put_contents($providerPath,$str);
+        file_put_contents($providerPath, $str);
 
         $str = Str::of(file_get_contents($providerPath));
-        $str = $str->when(!$str->contains('mapModuleWebRoutes'),function($string){
-            return $string->beforeLast('}')->append(file_get_contents(__DIR__ . '/stubs/install/route-web-method.stub').'}');
+        $str = $str->when(! $str->contains('mapModuleWebRoutes'), function ($string) {
+            return $string->beforeLast('}')->append(file_get_contents(__DIR__.'/stubs/install/route-web-method.stub').'}');
         });
-        file_put_contents($providerPath,$str);
+        file_put_contents($providerPath, $str);
 
         $str = Str::of(file_get_contents($providerPath))
-            ->replace('$this->routes(function () {',PHP_EOL.'$this->routes(function () {'.PHP_EOL.'$this->mapModuleApiRoutes();');
-        file_put_contents($providerPath,$str);
+            ->replace('$this->routes(function () {', PHP_EOL.'$this->routes(function () {'.PHP_EOL.'$this->mapModuleApiRoutes();');
+        file_put_contents($providerPath, $str);
 
         $str = Str::of(file_get_contents($providerPath))
-            ->replace('$this->routes(function () {',PHP_EOL.'$this->routes(function () {'.PHP_EOL.'$this->mapModuleAdminRoutes();');
-        file_put_contents($providerPath,$str);
+            ->replace('$this->routes(function () {', PHP_EOL.'$this->routes(function () {'.PHP_EOL.'$this->mapModuleAdminRoutes();');
+        file_put_contents($providerPath, $str);
 
         $str = Str::of(file_get_contents($providerPath))
-            ->replace('$this->routes(function () {',PHP_EOL.'$this->routes(function () {'.PHP_EOL.'$this->mapModuleWebRoutes();');
-        file_put_contents($providerPath,$str);
-
+            ->replace('$this->routes(function () {', PHP_EOL.'$this->routes(function () {'.PHP_EOL.'$this->mapModuleWebRoutes();');
+        file_put_contents($providerPath, $str);
     }
 }
