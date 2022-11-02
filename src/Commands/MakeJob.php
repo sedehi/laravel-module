@@ -4,7 +4,6 @@ namespace Sedehi\LaravelModule\Commands;
 
 use Illuminate\Foundation\Console\JobMakeCommand;
 use Sedehi\LaravelModule\Commands\Questions\ModuleName;
-use Sedehi\LaravelModule\Traits\CommandOptions;
 use Sedehi\LaravelModule\Traits\Interactive;
 use Sedehi\LaravelModule\Traits\ModuleNameOption;
 use Symfony\Component\Console\Input\InputOption;
@@ -16,12 +15,12 @@ class MakeJob extends JobMakeCommand implements ModuleName
     protected function getDefaultNamespace($rootNamespace)
     {
         $rootNamespace = $rootNamespace.$this->getModuleName();
-        if($this->option('action')){
+        if ($this->option('action')) {
             return $rootNamespace.'\Actions';
         }
+
         return $rootNamespace.'\Jobs';
     }
-
 
     protected function getOptions()
     {

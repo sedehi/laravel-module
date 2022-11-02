@@ -11,7 +11,8 @@ class MigrationServiceProvider extends LaravelMigrationServiceProvider
 {
     use AbstractName;
 
-    public function boot(){
+    public function boot()
+    {
         $this->loadMigration();
     }
 
@@ -25,7 +26,6 @@ class MigrationServiceProvider extends LaravelMigrationServiceProvider
             return new MakeMigration($creator, $composer);
         });
     }
-
 
     protected function loadMigration()
     {

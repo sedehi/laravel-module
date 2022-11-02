@@ -33,7 +33,6 @@ class MakeJobTest extends TestCase
         ]);
 
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/Actions/{$this->sampleName}.php"));
-
     }
 
     /**
