@@ -19,18 +19,18 @@ class MakeCrudTest extends TestCase
         $this->artisan('make:crud', [
             'module' => $this->moduleName,
             'name' => $this->sampleName,
-        ])->expectsQuestion('Do you want to create model ?','yes')
-            ->expectsQuestion('Do you want to create admin controller ?','yes')
-            ->expectsQuestion('Do you want to upload picture in admin ?','yes')
+        ])->expectsQuestion('Do you want to create model ?', 'yes')
+            ->expectsQuestion('Do you want to create admin controller ?', 'yes')
+            ->expectsQuestion('Do you want to upload picture in admin ?', 'yes')
             ->expectsQuestion("A {$adminRequestClass} Request does not exist. Do you want to generate it?", 'yes')
-            ->expectsQuestion('Do you want to create site controller ?','yes')
+            ->expectsQuestion('Do you want to create site controller ?', 'yes')
             ->expectsQuestion("A {$siteRequestClass} Request does not exist. Do you want to generate it?", 'yes')
-            ->expectsQuestion("Do you want to create api controller ?", 'yes')
+            ->expectsQuestion('Do you want to create api controller ?', 'yes')
             ->expectsQuestion("A {$apiRequestClass} Request does not exist. Do you want to generate it?", 'yes')
-            ->expectsQuestion("Do you want to create factory ?", 'yes')
-            ->expectsQuestion("Do you want to create migration ?", 'yes')
-            ->expectsQuestion("What is table name?", 'test')
-            ->expectsQuestion("Do you want to create route ?", 'yes')
+            ->expectsQuestion('Do you want to create factory ?', 'yes')
+            ->expectsQuestion('Do you want to create migration ?', 'yes')
+            ->expectsQuestion('What is table name?', 'test')
+            ->expectsQuestion('Do you want to create route ?', 'yes')
             ->assertOk();
 
         $lowerSampleName = strtolower($this->sampleName);
@@ -44,15 +44,12 @@ class MakeCrudTest extends TestCase
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/Requests/Admin/{$this->sampleName}Request.php"));
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/Requests/Api/V1/{$this->sampleName}Request.php"));
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/Requests/Site/{$this->sampleName}Request.php"));
-        $this->assertFileExists(app_path('Modules/'.$this->moduleName."/routes/admin.php"));
-        $this->assertFileExists(app_path('Modules/'.$this->moduleName."/routes/api.php"));
-        $this->assertFileExists(app_path('Modules/'.$this->moduleName."/routes/web.php"));
+        $this->assertFileExists(app_path('Modules/'.$this->moduleName.'/routes/admin.php'));
+        $this->assertFileExists(app_path('Modules/'.$this->moduleName.'/routes/api.php'));
+        $this->assertFileExists(app_path('Modules/'.$this->moduleName.'/routes/web.php'));
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/views/admin/{$lowerSampleName}/form.blade.php"));
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/views/admin/{$lowerSampleName}/index.blade.php"));
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/views/admin/{$lowerSampleName}/search-form.blade.php"));
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/views/admin/{$lowerSampleName}/show.blade.php"));
-
-
     }
-
 }
