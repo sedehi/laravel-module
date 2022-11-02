@@ -32,33 +32,33 @@ class MakeCrud extends Command
     public function handle()
     {
         $adminController = $siteController = $apiController = false;
-        if ($this->confirm('Do you want to create model ? [y|n]', true)) {
+        if ($this->confirm('Do you want to create model ?', true)) {
             $this->makeModel();
         }
-        if ($this->confirm('Do you want to create admin controller ? [y|n]', true)) {
+        if ($this->confirm('Do you want to create admin controller ?', true)) {
             $adminController = true;
-            if ($this->confirm('Do you want to upload picture in admin ? [y|n]', true)) {
+            if ($this->confirm('Do you want to upload picture in admin ?', true)) {
                 $this->makeAdminControllerWithUpload();
             } else {
                 $this->makeAdminController();
             }
         }
-        if ($this->confirm('Do you want to create site controller ? [y|n]', true)) {
+        if ($this->confirm('Do you want to create site controller ?', true)) {
             $siteController = true;
             $this->makeSiteController();
         }
-        if ($this->confirm('Do you want to create api controller ? [y|n]', true)) {
+        if ($this->confirm('Do you want to create api controller ?', true)) {
             $apiController = true;
             $this->makeApiController();
         }
-        if ($this->confirm('Do you want to create factory ? [y|n]', true)) {
+        if ($this->confirm('Do you want to create factory ?', true)) {
             $this->makeFactory();
         }
-        if ($this->confirm('Do you want to create migration ? [y|n]', true)) {
+        if ($this->confirm('Do you want to create migration ?', true)) {
             $name = $this->ask('What is table name?');
             $this->makeMigration($name ?? $this->argument('name'));
         }
-        if ($this->confirm('Do you want to create route ? [y|n]', true)) {
+        if ($this->confirm('Do you want to create route ?', true)) {
             $this->makeRoute($adminController, $siteController, $apiController);
         }
     }
