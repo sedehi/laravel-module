@@ -2,7 +2,6 @@
 
 namespace Sedehi\LaravelModule\Tests\Commands;
 
-use Illuminate\Support\Str;
 use Sedehi\LaravelModule\Tests\TestCase;
 
 class MakeModuleTest extends TestCase
