@@ -19,7 +19,7 @@
     verbose="true"
 >
     <testsuites>
-        <testsuite name="Sedehi Test Suite">
+        <testsuite name="Laravel Module Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
