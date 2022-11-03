@@ -1,9 +1,7 @@
 
     protected function mapModuleAdminRoutes()
     {
-        Route::middleware('web')
-            ->group(function () {
-                Route::prefix('admin')
+                Route::middleware('web')->prefix('admin')
                     ->name('admin.')
                     ->group(function () {
                         $routes = glob(app_path('Modules/*/routes/admin.php'));
@@ -11,5 +9,4 @@
                             require $route;
                         }
                     });
-            });
     }
