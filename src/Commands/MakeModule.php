@@ -38,6 +38,6 @@ class MakeModule extends Command
             'name' => strtolower($this->argument('name')),
         ]);
 
-        File::copy(__DIR__.'/stubs/views/menu.blade.stub',app_path('Modules/'.Str::studly($this->argument('name')).'/views/admin/menu.blade.php'));
+        File::copy(__DIR__.'/stubs/views/menu.blade.stub', app_path('Modules/'.Str::studly($this->argument('name')).'/views/admin/menu.blade.php'));
     }
 }
