@@ -1,4 +1,5 @@
 
+use Illuminate\Support\Facades\Route;
 use App\Modules\{{{name}}}\Controllers\Admin\{{{controller}}};
 
 Route::resource('{{{url}}}', {{{controller}}}::class);
