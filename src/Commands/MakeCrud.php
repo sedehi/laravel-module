@@ -75,9 +75,12 @@ class MakeCrud extends Command
             'name' => ucfirst($this->argument('name')).'Controller',
             '--admin' => true,
             '--crud' => true,
+            '--model' => Str::studly($this->argument('name'))
         ]);
         $this->call('make:view', [
+            'module' => $this->argument('module'),
             'name' => strtolower($this->argument('name')),
+            'controller' => ucfirst($this->argument('name')).'Controller',
         ]);
     }
 
