@@ -29,7 +29,7 @@ class MigrationServiceProvider extends LaravelMigrationServiceProvider
 
     protected function loadMigration()
     {
-        $migratePaths = glob(app_path('Modules/*/database/migrations'));
+        $migratePaths = glob(base_path('Modules/*/database/migrations'));
         $migratePaths = array_merge($migratePaths, [database_path('migrations')]);
         $this->loadMigrationsFrom($migratePaths);
     }
