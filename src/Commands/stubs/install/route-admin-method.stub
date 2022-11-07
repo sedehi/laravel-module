@@ -1,15 +1,15 @@
 
     protected function mapModuleAdminRoutes()
     {
-                Route::middleware('web')->prefix('admin')
-                    ->name('admin.')
-                    ->group(function () {
-                        if(file_exists(base_path('routes/admin.php'))){
-                            require base_path('routes/admin.php');
-                        }
-                        $routes = glob(app_path('Modules/*/routes/admin.php'));
-                        foreach ($routes as $route) {
-                            require $route;
-                        }
-                    });
+                Route::middleware('web')
+                    ->prefix('admin')
+                    ->name('admin.')->group(function () {
+                    if(file_exists(base_path('routes/admin.php'))){
+                        require base_path('routes/admin.php');
+                    }
+                    $routes = glob(app_path('Modules/*/routes/admin.php'));
+                    foreach ($routes as $route) {
+                        require $route;
+                    }
+                });
     }
