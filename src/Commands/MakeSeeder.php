@@ -29,6 +29,6 @@ class MakeSeeder extends SeederMakeCommand implements ModuleName
             return parent::rootNamespace();
         }
 
-        return 'App\Modules\\'.Str::studly($this->option('module')).'\Database\Seeders\\';
+        return 'App\Modules\\'.Str::studly($this->option('module')).'\database\seeders\\';
     }
 }
