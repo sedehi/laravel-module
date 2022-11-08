@@ -33,17 +33,19 @@ class LaravelModuleServiceProvider extends ServiceProvider
         }
     }
 
-    private function viewComposers(){
-        view()->composer('*::admin.*.*',function ($view){
+    private function viewComposers()
+    {
+        view()->composer('*::admin.*.*', function ($view) {
             $str = Str::of(request()->route()->getActionName())->after('App\Modules\\')->explode('\\');
             $module = $str->first();
-            $controllerWithMethod = explode('@',$str->last());
+            $controllerWithMethod = explode('@', $str->last());
             $controller = head($controllerWithMethod);
             $method = end($controllerWithMethod);
-            if($controller == $method){
+            if ($controller == $method) {
                 $method = '';
             }
-            return $view->with('module', $module)->with('controller',$controller)->with('method',$method);
+
+            return $view->with('module', $module)->with('controller', $controller)->with('method', $method);
         });
     }
 }
