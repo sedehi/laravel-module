@@ -42,7 +42,7 @@ class DummyClass extends Controller
 	    }
 	    $item->save();
 
-	    return redirect()->artistRedirect()->with('success', trans('admin.saved'));
+	    return redirect()->action([self::class,'index'])->with('success', trans('admin.saved'));
 
 	}
 
@@ -83,7 +83,7 @@ class DummyClass extends Controller
         }
         $item->save();
 
-        return redirect()->artistRedirect()->with('success', trans('admin.saved'));
+        return redirect()->action([self::class,'index'])->with('success', trans('admin.saved'));
 
     }
 
@@ -96,6 +96,6 @@ class DummyClass extends Controller
             $item->delete();
         }
 
-        return redirect()->artistRedirect()->with('success', trans('admin.deleted'));
+        return redirect()->action([self::class,'index'])->with('success', trans('admin.deleted'));
     }
 }
