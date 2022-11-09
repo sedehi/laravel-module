@@ -3,7 +3,6 @@
 namespace Sedehi\LaravelModule\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class InstallCommand extends Command
