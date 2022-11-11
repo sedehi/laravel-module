@@ -54,6 +54,6 @@ class MakeModuleTest extends TestCase
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/views/admin/{$lowerSampleName}/search-form.blade.php"));
         $this->assertFileExists(app_path('Modules/'.$this->moduleName."/views/admin/{$lowerSampleName}/show.blade.php"));
 
-        $this->assertFileExists(app_path('Modules/'.$this->moduleName.'/views/admin/menu.blade.php'));
+        $this->assertFileExists(app_path('Modules/'.$moduleName.'/views/admin/menu.blade.php'));
     }
 }
