@@ -35,7 +35,7 @@ class LaravelModuleServiceProvider extends ServiceProvider
 
     private function viewComposers()
     {
-        view()->composer(['*::admin.*.*','crud.index','crud.show','crud.create','crud.edit'], function ($view) {
+        view()->composer(['*::admin.*.*', 'crud.index', 'crud.show', 'crud.create', 'crud.edit'], function ($view) {
             $str = Str::of(request()->route()->getActionName())->after('App\Modules\\')->explode('\\');
             $routePrefix = null;
             $routePrefixSingular = null;
