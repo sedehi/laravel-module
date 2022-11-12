@@ -39,8 +39,8 @@ class LaravelModuleServiceProvider extends ServiceProvider
             $str = Str::of(request()->route()->getActionName())->after('App\Modules\\')->explode('\\');
             $routePrefix = null;
             $routePrefixSingular = null;
-            $routeNames = explode('.',request()->route()->getName());
-            if(count($routeNames) == 3){
+            $routeNames = explode('.', request()->route()->getName());
+            if (count($routeNames) == 3) {
                 $routePrefix = $routeNames[1];
                 $routePrefixSingular = Str::singular($routePrefix);
             }
