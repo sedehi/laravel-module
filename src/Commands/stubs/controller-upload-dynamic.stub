@@ -20,7 +20,7 @@ class DummyClass extends Controller
 
 	public function create()
 	{
-        return view('artist::crud.create');
+        return view('crud.create');
 	}
 
 	public function store(DummyRequestClass $request)
@@ -51,7 +51,7 @@ class DummyClass extends Controller
     {
         $item = DummyModelClass::findOrFail($id);
 
-        return view('vendor.artist.crud.edit', compact('item'));
+        return view('crud.edit', compact('item'));
     }
 
     public function show($id)
