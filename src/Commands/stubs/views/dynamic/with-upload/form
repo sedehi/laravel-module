@@ -1,5 +1,5 @@
 <div class="row">
-    <x-artist::inputs.text :model="$item ?? null" name="title" />
+    <x:form::input placeholder="first name" name="first_name"/>
     <div class="form-group col-md-6">
         <label for="file">@lang('validation.attributes.picture')</label>
         <input name="file" type="file" class="upload-input upload-files">
