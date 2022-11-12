@@ -37,6 +37,13 @@ class LaravelModuleServiceProvider extends ServiceProvider
     {
         view()->composer(['*::admin.*.*','crud.index','crud.show','crud.create','crud.edit'], function ($view) {
             $str = Str::of(request()->route()->getActionName())->after('App\Modules\\')->explode('\\');
+            $routePrefix = null;
+            $routePrefixSingular = null;
+            $routeNames = explode('.',request()->route()->getName());
+            if(count($routeNames) == 3){
+                $routePrefix = $routeNames[1];
+                $routePrefixSingular = Str::singular($routePrefix);
+            }
             $module = $str->first();
             $controllerWithMethod = explode('@', $str->last());
             $controller = head($controllerWithMethod);
@@ -45,7 +52,11 @@ class LaravelModuleServiceProvider extends ServiceProvider
                 $method = '';
             }
 
-            return $view->with('module', $module)->with('controller', $controller)->with('method', $method);
+            return $view->with('module', $module)
+                ->with('controller', $controller)
+                ->with('method', $method)
+                ->with('routePrefix', $routePrefix)
+                ->with('routePrefixSingular', $routePrefixSingular);
         });
     }
 }
