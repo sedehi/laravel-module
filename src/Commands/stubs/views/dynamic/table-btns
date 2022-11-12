@@ -1,0 +1,2 @@
+<a href="{{route('admin.'.$routePrefix.'.edit',$item->id)}}" class="btn btn-info">@lang('admin.edit')</a>
+<a href="{{route('admin.'.$routePrefix.'.show',$item->id)}}" class="btn btn-success">@lang('admin.show')</a>
