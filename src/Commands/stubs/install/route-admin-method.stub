@@ -2,7 +2,8 @@
     protected function mapModuleAdminRoutes()
     {
                 Route::middleware('web')
-                    ->prefix('admin')
+                    ->prefix(config('starter-kit.admin_path'))
+                    ->domain(config('starter-kit.domain.admin'))
                     ->name('admin.')->group(function () {
                     if(file_exists(base_path('routes/admin.php'))){
                         require base_path('routes/admin.php');

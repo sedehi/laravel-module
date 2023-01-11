@@ -2,6 +2,7 @@
     protected function mapModuleApiRoutes()
     {
         Route::middleware('api')
+            ->domain(config('starter-kit.domain.api'))
             ->group(function () {
                 $routes = glob(app_path('Modules/*/routes/api.php'));
                 foreach ($routes as $route) {
