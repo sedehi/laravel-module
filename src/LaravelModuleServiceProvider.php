@@ -11,6 +11,11 @@ class LaravelModuleServiceProvider extends ServiceProvider
     {
         $this->loadViews();
         $this->viewComposers();
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/module.php' => config_path('module.php'),
+            ], 'config');
+        }
     }
 
     public function register()
@@ -18,6 +23,9 @@ class LaravelModuleServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->app->register(CommandsServiceProvider::class);
         }
+
+        $this->mergeConfigFrom(__DIR__.'/../config/module.php', 'module');
+
     }
 
     /**
