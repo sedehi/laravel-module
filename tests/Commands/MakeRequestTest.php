@@ -8,6 +8,7 @@ class MakeRequestTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_request_class()
@@ -28,6 +29,7 @@ class MakeRequestTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_request_class_type_option()
@@ -74,6 +76,7 @@ class MakeRequestTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_request_class_interactive()

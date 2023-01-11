@@ -8,6 +8,7 @@ class MakeNotificationTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_notification_class()
@@ -22,6 +23,7 @@ class MakeNotificationTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_notification_class_interactive()

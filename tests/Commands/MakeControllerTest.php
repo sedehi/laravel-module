@@ -8,6 +8,7 @@ class MakeControllerTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_controller()
@@ -33,6 +34,7 @@ class MakeControllerTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_controller_class_type_option()
@@ -90,6 +92,7 @@ class MakeControllerTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function model_is_required_if_crud_option_used()
@@ -104,6 +107,7 @@ class MakeControllerTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function interactive_controller_types()
@@ -125,6 +129,7 @@ class MakeControllerTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function interactive_resource_controller_should_aks_for_parent_model_name()
@@ -148,6 +153,7 @@ class MakeControllerTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function interactive_crud_controller_should_aks_for_model_name()
@@ -170,6 +176,7 @@ class MakeControllerTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function interactive_upload_controller_should_aks_for_model_name()

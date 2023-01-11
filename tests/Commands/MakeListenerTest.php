@@ -8,6 +8,7 @@ class MakeListenerTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_listener_class()
@@ -22,6 +23,7 @@ class MakeListenerTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_listener_class_interactive()

@@ -8,6 +8,7 @@ class MakeModuleTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_module_with_crud()

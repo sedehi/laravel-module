@@ -8,6 +8,7 @@ class MakeRuleTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_rule_class()
@@ -22,6 +23,7 @@ class MakeRuleTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_rule_class_interactive()

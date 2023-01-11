@@ -8,6 +8,7 @@ class MakeTestTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_test()
@@ -28,6 +29,7 @@ class MakeTestTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_test_with_unit_option()
@@ -43,6 +45,7 @@ class MakeTestTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_test_class_with_type_option()
@@ -87,6 +90,7 @@ class MakeTestTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function model_and_controller_is_required_if_module_and_crud_option_used()
@@ -109,6 +113,7 @@ class MakeTestTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function interactive_without_module()
@@ -125,6 +130,7 @@ class MakeTestTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function interactive_with_module_and_crud()

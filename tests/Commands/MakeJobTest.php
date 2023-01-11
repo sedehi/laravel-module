@@ -8,6 +8,7 @@ class MakeJobTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_job_class()
@@ -22,6 +23,7 @@ class MakeJobTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_job_class_as_an_action()
@@ -37,6 +39,7 @@ class MakeJobTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_job_class_interactive()

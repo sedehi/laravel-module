@@ -8,6 +8,7 @@ class MakeMailTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_mail_class()
@@ -22,6 +23,7 @@ class MakeMailTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_mail_class_interactive()

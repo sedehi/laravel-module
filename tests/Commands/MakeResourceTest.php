@@ -8,6 +8,7 @@ class MakeResourceTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_resource_class()
@@ -28,6 +29,7 @@ class MakeResourceTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_resource_class_with_api_version_option()
@@ -43,6 +45,7 @@ class MakeResourceTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_resource_class_interactive()

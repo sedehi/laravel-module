@@ -8,6 +8,7 @@ class MakeCrudTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_crud_with_upload()

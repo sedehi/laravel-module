@@ -8,6 +8,7 @@ class MakePolicyTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_policy_class()
@@ -22,6 +23,7 @@ class MakePolicyTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_policy_class_interactive()

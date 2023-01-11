@@ -8,6 +8,7 @@ class MakeEventTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_event_class()
@@ -22,6 +23,7 @@ class MakeEventTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_event_class_interactive()

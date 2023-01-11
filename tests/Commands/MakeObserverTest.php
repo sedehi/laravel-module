@@ -8,6 +8,7 @@ class MakeObserverTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_observer_class()
@@ -22,6 +23,7 @@ class MakeObserverTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_observer_class_interactive()

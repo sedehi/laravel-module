@@ -8,6 +8,7 @@ class MakeExceptionTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_exception_class()
@@ -21,6 +22,7 @@ class MakeExceptionTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_exception_class_interactive()

@@ -8,6 +8,7 @@ class MakeFactoryTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_factory()
@@ -21,6 +22,7 @@ class MakeFactoryTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_factory_interactive()

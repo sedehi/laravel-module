@@ -8,6 +8,7 @@ class MakeChannelTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_a_new_channel_class()
@@ -22,6 +23,7 @@ class MakeChannelTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_channel_class_interactive()

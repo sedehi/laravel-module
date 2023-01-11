@@ -8,6 +8,7 @@ class MakeSeederTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_seeder_class()
@@ -22,6 +23,7 @@ class MakeSeederTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_seeder_class_without_module_option()
@@ -35,6 +37,7 @@ class MakeSeederTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_seeder_class_interactive()

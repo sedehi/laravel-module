@@ -8,6 +8,7 @@ class MakeMigrationTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_migration_class()

@@ -8,6 +8,7 @@ class MakeViewTest extends TestCase
 {
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_crud_view_files()
@@ -27,6 +28,7 @@ class MakeViewTest extends TestCase
 
     /**
      * @return void
+     *
      * @test
      */
     public function it_can_make_crud_with_upload_view_files()
