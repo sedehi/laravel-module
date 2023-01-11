@@ -2,8 +2,8 @@
 
 return [
     'domain' => [
-        'admin' => env('ADMIN_DOMAIN', 'localhost'),
-        'api' => env('API_DOMAIN', 'localhost'),
+        'admin' => env('ADMIN_DOMAIN', null),
+        'api' => env('API_DOMAIN', null),
     ],
     'admin_path' => env('ADMIN_PATH', 'admin'),
 ];
