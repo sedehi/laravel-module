@@ -58,7 +58,7 @@ class DummyClass extends Controller
 
     public function destroy(DummyRequestClass $request)
     {
-        DummyModelClass::whereIn('id', $request->get('deleteId'))->get()->each->delete();
+        DummyModelClass::whereIn('id', $request->get('id'))->get()->each->delete();
 
         return redirect()->action([self::class,'index'])->with('success', trans('admin.deleted'));
     }

@@ -90,7 +90,7 @@ class DummyClass extends Controller
 
     public function destroy(DummyRequestClass $request)
     {
-        $items  = DummyModelClass::whereIn('id', $request->get('deleteId'))->get();
+        $items  = DummyModelClass::whereIn('id', $request->get('id'))->get();
 
         foreach ($items as $item) {
             ImageMaker::make()->path(config('image.paths.DummySectionLower'))->name($item->picture)->remove();

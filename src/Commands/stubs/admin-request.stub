@@ -16,7 +16,7 @@ class DummyClass extends FormRequest
         switch($this->route()->getActionMethod()) {
             case 'destroy':
                 return [
-                    'deleteId' => 'required|array',
+                    'id' => 'required|array',
                 ];
                 break;
             case 'store':
