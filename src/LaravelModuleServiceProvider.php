@@ -14,7 +14,7 @@ class LaravelModuleServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/module.php' => config_path('module.php'),
-            ], 'config');
+            ], 'module-config');
         }
     }
 
