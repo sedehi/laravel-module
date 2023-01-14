@@ -6,4 +6,5 @@ return [
         'api' => env('API_DOMAIN', null),
     ],
     'admin_path' => env('ADMIN_PATH', 'admin'),
+    'admin_guard' => 'admin',
 ];
