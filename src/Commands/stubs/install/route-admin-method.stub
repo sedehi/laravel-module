@@ -1,7 +1,7 @@
 
     protected function mapModuleAdminRoutes()
     {
-                Route::middleware('web')
+                Route::middleware(config('module.admin_middleware'))
                     ->prefix(config('module.admin_path'))
                     ->domain(config('module.domain.admin'))
                     ->name('admin.')->group(function () {

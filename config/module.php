@@ -7,4 +7,5 @@ return [
     ],
     'admin_path' => env('ADMIN_PATH', 'admin'),
     'admin_guard' => 'admin',
+    'admin_middleware' => ['web'],
 ];
