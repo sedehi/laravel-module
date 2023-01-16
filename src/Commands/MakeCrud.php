@@ -13,8 +13,8 @@ class MakeCrud extends Command
      *
      * @var string
      */
-    protected $signature = 'make:crud 
-                            {module : The name of the module} 
+    protected $signature = 'make:crud
+                            {module : The name of the module}
                             {name : The name of the crud}';
 
     /**
@@ -41,6 +41,9 @@ class MakeCrud extends Command
                 $this->makeAdminControllerWithUpload();
             } else {
                 $this->makeAdminController();
+            }
+            if ($this->confirm('Do you want to create permission seeder ?', true)) {
+                $this->makePermissionSeeder();
             }
         }
         if ($this->confirm('Do you want to create site controller ?', true)) {
@@ -117,6 +120,15 @@ class MakeCrud extends Command
         $this->call('make:migration', [
             '--module' => ucfirst($this->argument('module')),
             'name' => 'create_'.$name.'_table',
+        ]);
+    }
+
+
+    private function makePermissionSeeder()
+    {
+        $this->call('make:seeder', [
+            '--module' => ucfirst($this->argument('module')),
+            'name' => 'AdminPermissionSeeder',
         ]);
     }
 
