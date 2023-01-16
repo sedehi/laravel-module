@@ -43,14 +43,14 @@ class MakeView extends Command
                 if (File::exists(app_path('Modules/'.ucfirst($this->argument('module')).'/views/admin/'.strtolower($this->argument('name')).'/'.File::name($templateFile).'.blade.php'))) {
                     $this->error('Admin '.File::name($templateFile).' view already exists.');
                 } else {
-                    if (File::exists(resource_path('section-stubs/'.$stubFolder.'/with-upload/'.File::name($templateFile).'.stub'))) {
-                        $data = File::get(resource_path('section-stubs/'.$stubFolder.'/with-upload/'.File::name($templateFile).'.stub'));
+                    if (File::exists(resource_path('module-stubs/'.$stubFolder.'/with-upload/'.File::name($templateFile).'.stub'))) {
+                        $data = File::get(resource_path('module-stubs/'.$stubFolder.'/with-upload/'.File::name($templateFile).'.stub'));
                     } else {
-                        $data = File::get($stubPath.File::name($templateFile));
+                        $data = File::get($stubPath.File::name($templateFile).'.stub');
                     }
                     $data = str_replace([
-                        '{{{section}}}',
-                        '{{{sectionLower}}}',
+                        '{{{module}}}',
+                        '{{{moduleLower}}}',
                         '{{{controller}}}',
                         '{{{controllerLower}}}',
                         '{{{name}}}',
@@ -74,7 +74,7 @@ class MakeView extends Command
                     if (File::exists(resource_path('module-stubs/'.$stubFolder.'/'.File::name($templateFile).'.stub'))) {
                         $data = File::get(resource_path('module-stubs/'.$stubFolder.'/'.File::name($templateFile).'.stub'));
                     } else {
-                        $data = File::get($stubPath.File::name($templateFile));
+                        $data = File::get($stubPath.File::name($templateFile).'.stub');
                     }
                     $data = str_replace([
                         '{{{module}}}',
