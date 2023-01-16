@@ -97,7 +97,6 @@ class MakeCrud extends Command
             '--model' => Str::studly($this->argument('name')),
         ]);
 
-
         $this->call('make:view', [
             'name' => strtolower($this->argument('name')),
             'module' => $this->argument('module'),
