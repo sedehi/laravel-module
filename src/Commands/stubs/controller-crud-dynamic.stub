@@ -8,8 +8,6 @@ use DummyFullRequestClass;
 
 class DummyClass extends Controller
 {
-    public static $viewForm = 'DummyViewForm';
-
     public function index()
     {
         $items = DummyModelClass::latest('id')->paginate(10);
