@@ -123,7 +123,6 @@ class MakeCrud extends Command
         ]);
     }
 
-
     private function makePermissionSeeder()
     {
         $this->call('make:seeder', [
