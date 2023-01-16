@@ -1,4 +1,3 @@
 <div class="form-row">
-       <x:form::input placeholder="first name" name="first_name"/>
-
+    <x:form::input name="title"/>
 </div>

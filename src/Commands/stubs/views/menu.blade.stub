@@ -1,1 +1,1 @@
-<x-tabler::sidebar-link :title="trans('permissions.{{{moduleLower}}}')" route="admin.{{{moduleLower}}}.index" />
+<x-tabler::sidebar-link :title="trans('permissions.{{{name}}}')" route="admin.{{{name}}}.index" />

@@ -37,7 +37,17 @@ class MakeModule extends Command
             'module' => strtolower($this->argument('name')),
             'name' => strtolower($this->argument('name')),
         ]);
+        $menuContent = File::get(__DIR__.'/stubs/views/menu.blade.stub');
 
-        File::copy(__DIR__.'/stubs/views/menu.blade.stub', app_path('Modules/'.Str::studly($this->argument('name')).'/views/admin/menu.blade.php'));
+        $menuContent = str_replace([
+            '{{{name}}}',
+        ], [
+            strtolower($this->argument('name')),
+        ], $menuContent);
+
+        File::put(
+            app_path('Modules/'.Str::studly($this->argument('name')).'/views/admin/menu.blade.php'),
+            $menuContent
+        );
     }
 }
