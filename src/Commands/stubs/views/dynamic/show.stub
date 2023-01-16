@@ -1,0 +1,11 @@
+@extends('crud.show')
+@section('table-rows')
+    <tr>
+        <td>@lang('validation.attributes.title')</td>
+        <td>{{$item->title}}</td>
+    </tr>
+    <tr>
+        <td>@lang('validation.attributes.created_at')</td>
+        <td>{{$item->created_at->toJalali()}}</td>
+    </tr>
+@endsection
