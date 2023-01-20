@@ -49,10 +49,9 @@ class InstallCommand extends Command
         });
 
         file_put_contents($providerPath, $str);
-        Artisan::call('make:provider',['name' => 'ModuleServiceProvider']);
+        Artisan::call('make:provider', ['name' => 'ModuleServiceProvider']);
         $this->registerModuleServiceProvider();
     }
-
 
     /**
      * Register the Horizon service provider in the application configuration file.
@@ -75,5 +74,4 @@ class InstallCommand extends Command
             $appConfig
         ));
     }
-
 }
