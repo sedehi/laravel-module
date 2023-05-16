@@ -27,9 +27,6 @@ class LaravelModuleServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/module.php', 'module');
     }
 
-    /**
-     * @return void
-     */
     private function loadViews(): void
     {
         view()->addLocation(app_path('Modules'));
@@ -51,7 +48,7 @@ class LaravelModuleServiceProvider extends ServiceProvider
             if (count($routeNames) >= 3) {
                 unset($routeNames[array_key_last($routeNames)]);
                 unset($routeNames[0]);
-                $routePrefix = implode('.',$routeNames);
+                $routePrefix = implode('.', $routeNames);
                 $routePrefixSingular = Str::singular($routePrefix);
             }
             $module = $str->first();
