@@ -48,8 +48,10 @@ class LaravelModuleServiceProvider extends ServiceProvider
             $routePrefixSingular = null;
             $routeName = request()->route()->getName();
             $routeNames = explode('.', $routeName);
-            if (count($routeNames) == 3) {
-                $routePrefix = $routeNames[1];
+            if (count($routeNames) >= 3) {
+                unset($routeNames[array_key_last($routeNames)]);
+                unset($routeNames[0]);
+                $routePrefix = implode('.',$routeNames);
                 $routePrefixSingular = Str::singular($routePrefix);
             }
             $module = $str->first();
