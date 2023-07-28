@@ -49,29 +49,5 @@ class InstallCommand extends Command
         });
 
         file_put_contents($providerPath, $str);
-        Artisan::call('make:provider', ['name' => 'ModuleServiceProvider']);
-        $this->registerModuleServiceProvider();
-    }
-
-    /**
-     * Register the Horizon service provider in the application configuration file.
-     *
-     * @return void
-     */
-    protected function registerModuleServiceProvider()
-    {
-        $namespace = Str::replaceLast('\\', '', $this->laravel->getNamespace());
-
-        $appConfig = file_get_contents(config_path('app.php'));
-
-        if (Str::contains($appConfig, $namespace.'\\Providers\\ModuleServiceProvider::class')) {
-            return;
-        }
-
-        file_put_contents(config_path('app.php'), str_replace(
-            "{$namespace}\\Providers\EventServiceProvider::class,".PHP_EOL,
-            "{$namespace}\\Providers\EventServiceProvider::class,".PHP_EOL."        {$namespace}\Providers\ModuleServiceProvider::class,".PHP_EOL,
-            $appConfig
-        ));
     }
 }

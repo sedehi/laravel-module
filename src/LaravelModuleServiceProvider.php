@@ -16,6 +16,7 @@ class LaravelModuleServiceProvider extends ServiceProvider
                 __DIR__.'/../config/module.php' => config_path('module.php'),
             ], 'module-config');
         }
+        $this->registerDirective();
     }
 
     public function register()
@@ -65,6 +66,13 @@ class LaravelModuleServiceProvider extends ServiceProvider
                 ->with('routeName', $routeName)
                 ->with('routePrefix', $routePrefix)
                 ->with('routePrefixSingular', $routePrefixSingular);
+        });
+    }
+
+    protected function registerDirective()
+    {
+        Blade::if('hasRoute', function ($expression) {
+            return "<?php auth(config('module.admin_guard'))->user()->hasRoute($expression) ?>";
         });
     }
 }
