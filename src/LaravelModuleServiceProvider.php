@@ -2,6 +2,7 @@
 
 namespace Sedehi\LaravelModule;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 
